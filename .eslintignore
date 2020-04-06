@@ -1,0 +1,7 @@
+/coverage/**
+webpack.dev.config.js
+webpack.prod.config.js
+README.md
+/src/**/*.scss
+/src/**/*.jpg
+/src/**/*.png

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
+    "allowJs": true,
+    "noEmit": true,
+    "strict": false,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "baseUrl": "./src/",
+    "skipLibCheck": true,
+    "paths": {
+      "@config/*": ["./config/*"],
+      "@app": ["./app"],
+      "@app/*": ["./app/*"],
+      "@routes": ["./routes"],
+      "@components/*": ["./components/*"],
+      "@hoc/*": ["./hoc/*"],
+      "@header/*": ["./header/*"],
+      "@pages/*": ["./pages/*"],
+      "@theme": ["./theme"],
+      "@style": ["./style"],
+      "@style/*": ["./style/*"]
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "./node_modules/*"
+  ]
+}

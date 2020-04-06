@@ -1,0 +1,19 @@
+{
+  "verbose": true,
+  "clearMocks": true,
+  "restoreMocks": true,
+  "collectCoverage": true,
+  "setupFilesAfterEnv": ["./config/enzyme.js", "./config/testing-library.js"],
+  "collectCoverageFrom": [
+    "src/**/*.{ts,tsx}",
+    "!**/node_modules/**",
+    "!src/index.tsx",
+    "!src/routes/**",
+    "!src/config/**",
+    "!src/style/**",
+    "!src/**/style.*"
+  ],
+  "moduleNameMapper": {
+    "\\.(scss)$": "<rootDir>/config/module-mock.js"
+  }
+}
