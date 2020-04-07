@@ -2,7 +2,7 @@ import React from 'react';
 
 import withSuspense from '@hoc/with-suspense';
 
-const Landing = React.lazy(() => import('@pages/landing/components/root'));
+const Landing = React.lazy(() => import('@pages/landing/containers/root'));
 
 export const LANDING_PATH = '/';
 

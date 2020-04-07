@@ -7,6 +7,7 @@ import initAxios from '@config/axios';
 import '@style/index.scss';
 import theme from '@theme';
 import routes from '@routes';
+import { StoreProvider } from '@store';
 import App from '@app';
 
 initAxios({
@@ -14,12 +15,14 @@ initAxios({
 });
 
 render(
-  <BrowserRouter>
-    <CssBaseline>
-      <MuiThemeProvider theme={theme}>
-        <App routes={routes} />
-      </MuiThemeProvider>
-    </CssBaseline>
-  </BrowserRouter>,
+  <StoreProvider>
+    <BrowserRouter>
+      <CssBaseline>
+        <MuiThemeProvider theme={theme}>
+          <App routes={routes} />
+        </MuiThemeProvider>
+      </CssBaseline>
+    </BrowserRouter>
+  </StoreProvider>,
   document.getElementById('root'),
 );

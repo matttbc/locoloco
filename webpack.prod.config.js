@@ -41,7 +41,7 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.API_URL': JSON.stringify('https://dev-api.view360global.net/api'),
+      'process.env.API_URL': JSON.stringify('https://ow7mg0y3wh.execute-api.us-east-1.amazonaws.com/dev'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',

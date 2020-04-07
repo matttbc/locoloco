@@ -1,7 +1,11 @@
 import React from 'react';
 
-const Landing: React.FC<{}> = () => (
-  <div>Hello world!</div>
+type Props = {
+  message: string;
+}
+
+const Landing: React.FC<Props> = ({ message }: Props) => (
+  <div>{message}</div>
 );
 
 export default Landing;

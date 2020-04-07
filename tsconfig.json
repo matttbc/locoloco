@@ -19,7 +19,9 @@
       "@components/*": ["./components/*"],
       "@hoc/*": ["./hoc/*"],
       "@header/*": ["./header/*"],
+      "@store": ["./store"],
       "@pages/*": ["./pages/*"],
+      "@services/*": ["./services/*"],
       "@theme": ["./theme"],
       "@style": ["./style"],
       "@style/*": ["./style/*"]

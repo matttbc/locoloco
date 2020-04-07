@@ -26,7 +26,7 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
-      'process.env.API_URL': JSON.stringify('http://localhost:8080/api'),
+      'process.env.API_URL': JSON.stringify('http://localhost:3000/dev'),
     }),
   ],
   module: {

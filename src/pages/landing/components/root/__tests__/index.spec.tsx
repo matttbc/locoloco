@@ -1,12 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 
 import Landing from '..';
 
-describe('Landing component', () => {
+describe('Landing page component', () => {
+  const renderProps = {
+    message: 'Hello world!',
+  };
+
   describe('render', () => {
-    it('should render', () => {
-      expect(() => shallow(<Landing />)).not.toThrow();
+    it('should render a message', () => {
+      const { findByText } = render(<Landing {...renderProps} />);
+      expect(findByText(renderProps.message)).toBeDefined();
     });
   });
 });
