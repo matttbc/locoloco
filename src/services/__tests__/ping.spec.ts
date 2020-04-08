@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { ping } from '../ping';
+import { fetch } from '../ping';
 
 jest.mock('axios');
 
 describe('Ping services', () => {
-  describe('ping', () => {
+  describe('fetch', () => {
     it('should do a get request to the /ping endpoint', () => {
-      ping();
+      fetch();
       expect(axios.get).toHaveBeenCalledWith('/ping');
     });
   });

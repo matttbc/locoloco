@@ -28,9 +28,9 @@ describe('Landing page container', () => {
   describe('mount', () => {
     it('should call ping services method and set the message in the store in case of success', () => {
       const promise = Promise.resolve({ data: { message: 'Hello!' } });
-      jest.spyOn(services, 'ping').mockReturnValue(promise);
+      jest.spyOn(services, 'fetch').mockReturnValue(promise);
       mount(<LandingContainer />);
-      expect(services.ping).toHaveBeenCalled();
+      expect(services.fetch).toHaveBeenCalled();
       return promise.then(() => {
         expect(store.ping.message).toEqual('Hello!');
       });
@@ -38,9 +38,9 @@ describe('Landing page container', () => {
 
     it('should call ping services method and set the error message in the store in case of an error', () => {
       const promise = Promise.reject(new Error('Error!'));
-      jest.spyOn(services, 'ping').mockReturnValue(promise);
+      jest.spyOn(services, 'fetch').mockReturnValue(promise);
       mount(<LandingContainer />);
-      expect(services.ping).toHaveBeenCalled();
+      expect(services.fetch).toHaveBeenCalled();
       return promise.then().catch(() => {
         expect(store.ping.message).toEqual('Error!');
       });
