@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 
 import styles from './styles';
 
@@ -7,7 +7,13 @@ const Header: React.FC<{}> = () => {
   const classes = styles();
 
   return (
-    <header>
+    <Grid
+      container
+      component="header"
+      alignItems="center"
+      justify="center"
+      className={classes.header}
+    >
       <Typography
         variant="button"
         align="center"
@@ -16,7 +22,7 @@ const Header: React.FC<{}> = () => {
       >
         LocoLoco
       </Typography>
-    </header>
+    </Grid>
   );
 };
 
