@@ -19,7 +19,7 @@ const Landing: React.FC<{}> = () => {
   }, []);
 
   return useObserver(() => (
-    <LandingPage message={ping.message} />
+    <LandingPage />
   ));
 };
 

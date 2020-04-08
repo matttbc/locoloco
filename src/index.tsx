@@ -1,10 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import { CssBaseline } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import initAxios from '@config/axios';
-import '@style/index.scss';
 import theme from '@theme';
 import routes from '@routes';
 import { StoreProvider } from '@store';

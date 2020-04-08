@@ -11,10 +11,6 @@
     "!src/routes/**",
     "!src/config/**",
     "!src/theme/**",
-    "!src/style/**",
-    "!src/**/style.*"
-  ],
-  "moduleNameMapper": {
-    "\\.(scss)$": "<rootDir>/config/module-mock.js"
-  }
+    "!src/**/styles.*"
+  ]
 }

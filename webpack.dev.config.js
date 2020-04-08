@@ -43,15 +43,6 @@ const config = {
         loader: 'babel-loader',
       },
       {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
-      {
         test: /\.(jpg|png)$/,
         use: 'file-loader?name=assets/images/[hash].[ext]',
       },

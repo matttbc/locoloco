@@ -1,16 +1,23 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
-import { LANDING_PATH } from '@routes';
+import styles from './styles';
 
-import './style.scss';
+const Header: React.FC<{}> = () => {
+  const classes = styles();
 
-const Header: React.FC<{}> = () => (
-  <header>
-    <Link to={LANDING_PATH}>
-      <span className="logo">LocoLoco</span>
-    </Link>
-  </header>
-);
+  return (
+    <header>
+      <Typography
+        variant="button"
+        align="center"
+        color="primary"
+        className={classes.logo}
+      >
+        LocoLoco
+      </Typography>
+    </header>
+  );
+};
 
 export default Header;

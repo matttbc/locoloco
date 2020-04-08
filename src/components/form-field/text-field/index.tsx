@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 import Message from '@components/message';
 
-import './style.scss';
+import styles from './styles';
 
 type Props = FieldProps & {
   name: string;
@@ -23,28 +23,32 @@ const TextField: React.FC<Props> = ({
   disabled,
   form,
   size,
-}: Props) => (
-  <div className="form-group text-field">
-    {label
-    && (
-      <label
-        htmlFor={field.name}
-      >
-        {label}
-      </label>
-    )}
-    <input
-      className={classNames('form-control', { 'form-control-lg': size === 'large' })}
-      {...field}
-      id={field.name}
-      placeholder={placeholder}
-      type={type}
-      disabled={disabled}
-    />
-    {form.touched[field.name] && form.errors[field.name]
-    && (<Message type="error" message={form.errors[field.name] as string} />)}
-  </div>
-);
+}: Props) => {
+  const classes = styles();
+
+  return (
+    <div className={classes.textField}>
+      {label
+      && (
+        <label
+          htmlFor={field.name}
+        >
+          {label}
+        </label>
+      )}
+      <input
+        className={classNames('form-control', { 'form-control-lg': size === 'large' })}
+        {...field}
+        id={field.name}
+        placeholder={placeholder}
+        type={type}
+        disabled={disabled}
+      />
+      {form.touched[field.name] && form.errors[field.name]
+      && (<Message type="error" message={form.errors[field.name] as string} />)}
+    </div>
+  );
+};
 
 TextField.defaultProps = {
   type: 'text',

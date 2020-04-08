@@ -62,20 +62,6 @@ const config = {
         loader: 'babel-loader',
       },
       {
-        test: /\.scss$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../',
-            },
-          },
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
-        ],
-      },
-      {
         test: /\.(jpg|png)$/,
         use: 'file-loader?name=assets/images/[hash].[ext]',
       },

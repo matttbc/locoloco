@@ -28,7 +28,6 @@
         "@store": "./src/store",
         "@services": "./src/services",
         "@theme": "./src/theme",
-        "@style": "./src/style"
       },
       "cwd": "packagejson"
     }]

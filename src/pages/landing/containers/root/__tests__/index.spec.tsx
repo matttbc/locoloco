@@ -21,7 +21,7 @@ describe('Landing page container', () => {
   describe('render', () => {
     it('should render a Landing page component', () => {
       const wrapper = shallow(<LandingContainer />);
-      expect(wrapper.find(LandingComponent).props().message).toEqual(store.ping.message);
+      expect(wrapper.find(LandingComponent).length).toEqual(1);
     });
   });
 

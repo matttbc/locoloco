@@ -22,9 +22,7 @@
       "@store": ["./store"],
       "@pages/*": ["./pages/*"],
       "@services/*": ["./services/*"],
-      "@theme": ["./theme"],
-      "@style": ["./style"],
-      "@style/*": ["./style/*"]
+      "@theme": ["./theme"]
     }
   },
   "include": [
