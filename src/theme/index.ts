@@ -16,4 +16,9 @@ export default createMuiTheme({
     ].join(','),
     htmlFontSize: 10,
   },
+  palette: {
+    background: {
+      default: '#ffffff',
+    },
+  },
 });

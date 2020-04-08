@@ -16,11 +16,10 @@ initAxios({
 render(
   <StoreProvider>
     <BrowserRouter>
-      <CssBaseline>
-        <MuiThemeProvider theme={theme}>
-          <App routes={routes} />
-        </MuiThemeProvider>
-      </CssBaseline>
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <App routes={routes} />
+      </MuiThemeProvider>
     </BrowserRouter>
   </StoreProvider>,
   document.getElementById('root'),

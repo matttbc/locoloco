@@ -3,6 +3,7 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useHistory } from 'react-router-dom';
 
+import { REGISTER_BUSINESS_PATH } from '@routes';
 import { useStore } from '@store';
 import RegisterForm from '../../components/register-form';
 
@@ -22,12 +23,12 @@ const Form: React.FC<{}> = () => {
 
   const onSubmit = (values: FormValues) => {
     trade.name = values.businessName;
-    history.push('/register');
+    history.push(REGISTER_BUSINESS_PATH);
   };
 
   return (
     <Formik
-      initialValues={{ businessName: '' }}
+      initialValues={{ businessName: trade.name }}
       validationSchema={ValidationSchema}
       onSubmit={onSubmit}
     >
