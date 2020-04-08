@@ -1,6 +1,8 @@
 import React from 'react';
 import { Typography, Grid } from '@material-ui/core';
 
+import RegisterForm from '../../containers/register-form';
+
 import styles from './styles';
 
 const Landing: React.FC<{}> = () => {
@@ -24,6 +26,7 @@ const Landing: React.FC<{}> = () => {
         <Typography component="p" align="center">
           Getting setup is easy - it takes less than 10 minutes. Oh, and it&apos;s free of course...
         </Typography>
+        <RegisterForm />
       </section>
     </Grid>
   );

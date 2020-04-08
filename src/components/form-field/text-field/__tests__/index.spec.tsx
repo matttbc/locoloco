@@ -1,7 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import { TextField } from '@material-ui/core';
 
-import TextField from '..';
+import TextFieldInput from '..';
 
 describe('TextField component', () => {
   describe('render', () => {
@@ -22,9 +23,9 @@ describe('TextField component', () => {
       };
     });
 
-    it('should render a text input', () => {
-      const wrapper = shallow(<TextField {...renderProps} />);
-      const inputProps = wrapper.find('input').props();
+    it('should render a TextField', () => {
+      const wrapper = shallow(<TextFieldInput {...renderProps} />);
+      const inputProps = wrapper.find(TextField).props();
       expect(inputProps.id).toEqual(renderProps.field.name);
       expect(inputProps.type).toEqual(renderProps.type);
       expect(inputProps.placeholder).toEqual(renderProps.placeholder);
@@ -32,30 +33,30 @@ describe('TextField component', () => {
     });
 
     it('should render a label if label prop value is defined', () => {
-      let wrapper = shallow(<TextField {...renderProps} />);
-      expect(wrapper.find('label').length).toEqual(0);
+      let wrapper = shallow(<TextFieldInput {...renderProps} />);
+      let inputProps = wrapper.find(TextField).props();
+      expect(inputProps.label).toEqual('');
 
       renderProps.label = 'Username';
-      wrapper = shallow(<TextField {...renderProps} />);
-      const label = wrapper.find('label');
-      const labelProps = label.props();
-      expect(label.text()).toEqual(renderProps.label);
-      expect(labelProps.htmlFor).toEqual(renderProps.field.name);
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
+      inputProps = wrapper.find(TextField).props();
+      expect(inputProps.label).toEqual(renderProps.label);
     });
 
     it('should render an error if form field is touched and field error is defined', () => {
-      let wrapper = shallow(<TextField {...renderProps} />);
-      expect(wrapper.find('Message').length).toEqual(0);
+      let wrapper = shallow(<TextFieldInput {...renderProps} />);
+      let inputProps = wrapper.find(TextField).props();
+      expect(inputProps.helperText).toBeUndefined();
 
       renderProps.form.touched[renderProps.field.name] = true;
-      wrapper = shallow(<TextField {...renderProps} />);
-      expect(wrapper.find('Message').length).toEqual(0);
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
+      inputProps = wrapper.find(TextField).props();
+      expect(inputProps.helperText).toBeUndefined();
 
-      renderProps.form.errors[renderProps.field.name] = 'Username error.';
-      wrapper = shallow(<TextField {...renderProps} />);
-      expect(wrapper.find('Message').props()).toMatchObject({
-        message: renderProps.form.errors[renderProps.field.name],
-      });
+      renderProps.form.errors[renderProps.field.name] = 'Field error.';
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
+      inputProps = wrapper.find(TextField).props();
+      expect(inputProps.helperText).toEqual(renderProps.form.errors[renderProps.field.name]);
     });
   });
 });

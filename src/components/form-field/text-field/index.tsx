@@ -1,10 +1,6 @@
 import React from 'react';
 import { FieldProps } from 'formik';
-import classNames from 'classnames';
-
-import Message from '@components/message';
-
-import styles from './styles';
+import { TextField } from '@material-ui/core';
 
 type Props = FieldProps & {
   name: string;
@@ -12,50 +8,37 @@ type Props = FieldProps & {
   label: string;
   placeholder: string;
   disabled: boolean;
-  size: 'normal' | 'large';
+  fullWidth: boolean;
 }
 
-const TextField: React.FC<Props> = ({
+const TextFieldInput: React.FC<Props> = ({
   type,
   label,
   field,
   placeholder,
   disabled,
+  fullWidth,
   form,
-  size,
-}: Props) => {
-  const classes = styles();
+}: Props) => (
+  <TextField
+    {...field}
+    id={field.name}
+    placeholder={placeholder}
+    type={type}
+    disabled={disabled}
+    error={form.touched[field.name] && !!form.errors[field.name]}
+    helperText={form.touched[field.name] && form.errors[field.name]}
+    label={label}
+    variant="outlined"
+    fullWidth={fullWidth}
+  />
+);
 
-  return (
-    <div className={classes.textField}>
-      {label
-      && (
-        <label
-          htmlFor={field.name}
-        >
-          {label}
-        </label>
-      )}
-      <input
-        className={classNames('form-control', { 'form-control-lg': size === 'large' })}
-        {...field}
-        id={field.name}
-        placeholder={placeholder}
-        type={type}
-        disabled={disabled}
-      />
-      {form.touched[field.name] && form.errors[field.name]
-      && (<Message type="error" message={form.errors[field.name] as string} />)}
-    </div>
-  );
-};
-
-TextField.defaultProps = {
+TextFieldInput.defaultProps = {
   type: 'text',
   label: '',
   placeholder: '',
   disabled: false,
-  size: 'normal',
 };
 
-export default TextField;
+export default TextFieldInput;

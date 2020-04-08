@@ -1,21 +1,21 @@
 import React from 'react';
 import { useLocalStore } from 'mobx-react';
 
-import PingStore from './ping';
+import TradeStore from './trade';
 
 const StoreContext = React.createContext<Store | null>(null);
 
-const createStore = (store: typeof PingStore) => () => store;
+const createStore = (store: typeof TradeStore) => () => store;
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const StoreProvider: React.FC<Props> = ({ children }: Props) => {
-  const ping = useLocalStore(createStore(PingStore));
+  const trade = useLocalStore(createStore(TradeStore));
 
   return (
-    <StoreContext.Provider value={{ ping }}>
+    <StoreContext.Provider value={{ trade }}>
       {children}
     </StoreContext.Provider>
   );
@@ -32,5 +32,5 @@ export const useStore = () => {
 };
 
 export type Store = {
-  ping: typeof PingStore;
+  trade: typeof TradeStore;
 };

@@ -4,10 +4,11 @@ import { Field } from 'formik';
 import TextField from './text-field';
 
 type Props = {
-  type: 'text' | 'hidden' | 'password';
+  type: 'text' | 'password';
   name: string;
   label: string;
-  size?: string;
+  placeholder?: string;
+  fullWidth?: boolean;
 }
 
 const FormField: React.FC<Props> = (props: Props) => {
