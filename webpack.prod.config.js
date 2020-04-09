@@ -41,7 +41,11 @@ const config = {
   plugins: [
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
-      'process.env.API_URL': JSON.stringify('https://ow7mg0y3wh.execute-api.us-east-1.amazonaws.com/dev'),
+      'process.env.STS_AUTHORITY': JSON.stringify('https://cognito-idp.us-east-1.amazonaws.com/us-east-1_nym9BKz1r/'),
+      'process.env.AUTHENTICATION_CLIENT_ID': JSON.stringify('489lrggrp6q5m1huf4n7s032kb'),
+      'process.env.AUTHENTICATION_CLIENT_SCOPE': JSON.stringify('openid email https://1moce99ue8.execute-api.us-east-1.amazonaws.com/admin.all'),
+      'process.env.APP_ROOT': JSON.stringify('https://master.d2gtcpj8lj87zj.amplifyapp.com/'),
+      'process.env.PRIVATE_API_URL': JSON.stringify('https://1moce99ue8.execute-api.us-east-1.amazonaws.com/dev'),
     }),
     new MiniCssExtractPlugin({
       filename: '[name].css',
