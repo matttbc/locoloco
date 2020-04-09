@@ -2,20 +2,20 @@ import React from 'react';
 import { useLocalStore } from 'mobx-react';
 
 import TradeStore from './trade';
+import SessionStore from './session';
 
 const StoreContext = React.createContext<Store | null>(null);
-
-const createStore = (store: typeof TradeStore) => () => store;
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const StoreProvider: React.FC<Props> = ({ children }: Props) => {
-  const trade = useLocalStore(createStore(TradeStore));
+  const trade = useLocalStore(() => TradeStore);
+  const session = useLocalStore(() => SessionStore);
 
   return (
-    <StoreContext.Provider value={{ trade }}>
+    <StoreContext.Provider value={{ trade, session }}>
       {children}
     </StoreContext.Provider>
   );
@@ -33,4 +33,5 @@ export const useStore = () => {
 
 export type Store = {
   trade: typeof TradeStore;
+  session: typeof SessionStore;
 };
