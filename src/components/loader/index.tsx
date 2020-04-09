@@ -1,15 +1,31 @@
 import React from 'react';
-import { CircularProgress } from '@material-ui/core';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
 
 import styles from './styles';
 
-const Loader: React.FC<{}> = () => {
+type Props = {
+  message?: string;
+};
+
+const Loader: React.FC<Props> = ({ message }: Props) => {
   const classes = styles();
 
   return (
-    <div className={classes.loader}>
+    <Grid
+      container
+      direction="column"
+      alignContent="center"
+      alignItems="center"
+      justify="center"
+      className={classes.loader}
+    >
+      {message && (
+        <Typography component="span" align="center">
+          {message}
+        </Typography>
+      )}
       <CircularProgress />
-    </div>
+    </Grid>
   );
 };
 
