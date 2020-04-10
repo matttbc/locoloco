@@ -3,9 +3,9 @@ import { Router } from 'react-router';
 import { createMemoryHistory } from 'history';
 import { render } from '@testing-library/react';
 
-import App from '..';
+import App from '../index';
 
-jest.mock('@header/components/root', () => (
+jest.mock('@header/containers/root', () => (
   jest.fn(() => <header>header</header>)
 ));
 

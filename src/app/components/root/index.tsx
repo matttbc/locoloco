@@ -1,7 +1,7 @@
 import React from 'react';
 import { Switch, Route } from 'react-router';
 
-import Header from '@header/components/root';
+import Header from '@header/containers/root';
 
 type RouteProps = {
   path: string;
