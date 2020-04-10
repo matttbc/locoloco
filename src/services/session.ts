@@ -15,4 +15,4 @@ export const loginRedirect = (): Promise<User> => userManager.signinRedirectCall
 
 export const getUser = (): Promise<User | null> => userManager.getUser();
 
-export const logout = (): Promise<void> => userManager.signoutRedirect();
+export const logout = (): Promise<void> => userManager.removeUser();

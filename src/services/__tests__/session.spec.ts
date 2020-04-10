@@ -16,7 +16,7 @@ jest.mock('oidc-client', () => ({
     signinSilent: jest.fn(),
     signinRedirectCallback: jest.fn(),
     getUser: jest.fn(),
-    signoutRedirect: jest.fn(),
+    removeUser: jest.fn(),
   })),
 }));
 
@@ -79,7 +79,7 @@ describe('Session services', () => {
     it('should call user auth manager signoutRedirect method', () => {
       const userManager = initAuthManager(config);
       logout();
-      expect(userManager.signoutRedirect).toHaveBeenCalled();
+      expect(userManager.removeUser).toHaveBeenCalled();
     });
   });
 });
