@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { mocked } from 'ts-jest/utils';
 
-import { useSession } from '@hooks/session';
+import { useSessionStatus } from '@hooks/session';
 import { useStore } from '@store';
 import withAuthentication from '..';
 
@@ -15,7 +15,7 @@ jest.mock('@store', () => ({
 }));
 
 jest.mock('@hooks/session', () => ({
-  useSession: jest.fn(),
+  useSessionStatus: jest.fn(),
 }));
 
 describe('withAuthentication hoc', () => {
@@ -27,7 +27,7 @@ describe('withAuthentication hoc', () => {
     children: 'mock',
   };
 
-  const mockedUseSession = mocked(useSession);
+  const mockedUseSession = mocked(useSessionStatus);
   const mockedUseStore = mocked(useStore);
 
   beforeEach(() => {

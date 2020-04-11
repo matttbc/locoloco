@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { mocked } from 'ts-jest/utils';
 
-import { useSession } from '@hooks/session';
+import { useSessionStatus } from '@hooks/session';
 import { useStore } from '@store';
 import App from '..';
 
 jest.mock('@hooks/session', () => ({
-  useSession: jest.fn(),
+  useSessionStatus: jest.fn(),
 }));
 
 jest.mock('@store', () => ({
@@ -40,7 +40,7 @@ describe('App container', () => {
   };
 
 
-  const mockedUseSession = mocked(useSession);
+  const mockedUseSession = mocked(useSessionStatus);
   const mockedUseStore = mocked(useStore);
 
   beforeEach(() => {
