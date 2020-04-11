@@ -18,8 +18,10 @@
       "@routes": ["./routes"],
       "@components/*": ["./components/*"],
       "@hoc/*": ["./hoc/*"],
+      "@hooks/*": ["./hooks/*"],
       "@header/*": ["./header/*"],
       "@store": ["./store"],
+      "@store/*": ["./store/*"],
       "@pages/*": ["./pages/*"],
       "@services/*": ["./services/*"],
       "@theme": ["./theme"]

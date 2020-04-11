@@ -1,5 +1,13 @@
-import { User } from 'oidc-client';
 import { useLocalStore } from 'mobx-react';
+
+export type User = {
+  id_token: string;
+  token_type: string;
+  profile: {
+    email: string;
+    username: string;
+  };
+}
 
 export type SessionStore = {
   token: string;

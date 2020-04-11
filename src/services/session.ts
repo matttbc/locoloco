@@ -1,4 +1,6 @@
-import { User, UserManager } from 'oidc-client';
+import { UserManager } from 'oidc-client';
+
+import { User } from '@store/session';
 
 let userManager;
 
