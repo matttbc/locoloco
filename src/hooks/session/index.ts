@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { getUser, loginRedirect } from '@services/session';
+import { getUser, loginRedirect, silentLogin } from '@services/session';
 
 export const useSessionStatus = (session) => {
   const [loading, setLoading] = React.useState<boolean>(!session.token);
@@ -35,6 +35,26 @@ export const useLoginStatus = (session) => {
       })
       .catch(() => {
         setError('Authentication failed. Please try again later.');
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  return {
+    loading,
+    error,
+  };
+};
+
+export const useSilentLoginStatus = () => {
+  const [loading, setLoading] = React.useState<boolean>(true);
+  const [error, setError] = React.useState<string>('');
+
+  React.useEffect(() => {
+    silentLogin()
+      .catch(() => {
+        setError('Silent authentication failed. Please try again later.');
       })
       .finally(() => {
         setLoading(false);

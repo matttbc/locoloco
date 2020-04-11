@@ -3,7 +3,7 @@ import React from 'react';
 import { render } from '@testing-library/react';
 
 import * as services from '@services/session';
-import { useSessionStatus, useLoginStatus } from '..';
+import { useSessionStatus, useLoginStatus, useSilentLoginStatus } from '..';
 
 describe('Session hooks', () => {
   const user = {
@@ -126,6 +126,57 @@ describe('Session hooks', () => {
         expect(session.set).not.toHaveBeenCalled();
         expect(findByText('false')).toBeDefined();
         expect(findByText('Authentication failed. Please try again later.')).toBeDefined();
+      });
+    });
+  });
+
+  describe('useSilentLoginStatus', () => {
+    const createComponent = () => (
+      () => {
+        const { loading, error } = useSilentLoginStatus();
+
+        return (
+          <div>
+            <span>{loading.toString()}</span>
+            {error && <span>{error}</span>}
+          </div>
+        );
+      }
+    );
+
+    it('should return a true loading status if silent login is in progress', () => {
+      jest.spyOn(services, 'silentLogin').mockReturnValue(Promise.resolve());
+      Component = createComponent();
+      const { findByText } = render(<Component />);
+      expect(findByText('true')).toBeDefined();
+    });
+
+    it('should call silentLogin services method on mount', () => {
+      const promise = Promise.resolve();
+      jest.spyOn(services, 'silentLogin').mockReturnValue(promise);
+      Component = createComponent();
+
+      const { findByText } = render(<Component />);
+      expect(findByText('true')).toBeDefined();
+      expect(services.silentLogin).toHaveBeenCalled();
+      return promise.then(() => {
+        expect(findByText('false')).toBeDefined();
+      });
+    });
+
+    it('should call silentLogin services method on mount'
+      + ' and set an error message on error ', () => {
+      const promise = Promise.reject(new Error('Error!'));
+      jest.spyOn(services, 'silentLogin').mockReturnValue(promise);
+      Component = createComponent();
+
+      const { findByText } = render(<Component />);
+      expect(findByText('true')).toBeDefined();
+      expect(services.silentLogin).toHaveBeenCalled();
+      return promise.then().catch(() => {
+        expect(session.set).not.toHaveBeenCalled();
+        expect(findByText('false')).toBeDefined();
+        expect(findByText('Silent authentication failed. Please try again later.')).toBeDefined();
       });
     });
   });
