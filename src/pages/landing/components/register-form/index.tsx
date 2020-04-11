@@ -6,7 +6,7 @@ import FormField from '@components/form-field';
 
 import styles from './styles';
 
-type Values = {
+export type Values = {
   businessName: string;
 }
 
