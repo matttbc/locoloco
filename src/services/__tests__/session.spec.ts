@@ -8,6 +8,7 @@ import initAuthManager, {
   loginRedirect,
   getUser,
   logout,
+  silentLogin,
 } from '../session';
 
 jest.mock('oidc-client', () => ({
@@ -17,6 +18,7 @@ jest.mock('oidc-client', () => ({
     signinRedirectCallback: jest.fn(),
     getUser: jest.fn(),
     removeUser: jest.fn(),
+    signinSilentCallback: jest.fn(),
   })),
 }));
 
@@ -80,6 +82,14 @@ describe('Session services', () => {
       const userManager = initAuthManager(config);
       logout();
       expect(userManager.removeUser).toHaveBeenCalled();
+    });
+  });
+
+  describe('silentLogin', () => {
+    it('should call user auth manager signinSilentCallback method', () => {
+      const userManager = initAuthManager(config);
+      silentLogin();
+      expect(userManager.signinSilentCallback).toHaveBeenCalled();
     });
   });
 });

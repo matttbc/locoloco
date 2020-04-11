@@ -15,6 +15,8 @@ export const renewToken = (): Promise<User> => userManager.signinSilent();
 
 export const loginRedirect = (): Promise<User> => userManager.signinRedirectCallback();
 
+export const silentLogin = (): Promise<void> => userManager.signinSilentCallback();
+
 export const getUser = (): Promise<User | null> => userManager.getUser();
 
 export const logout = (): Promise<void> => userManager.removeUser();
