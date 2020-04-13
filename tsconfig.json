@@ -24,7 +24,8 @@
       "@store/*": ["./store/*"],
       "@pages/*": ["./pages/*"],
       "@services/*": ["./services/*"],
-      "@theme": ["./theme"]
+      "@theme": ["./theme"],
+      "@styles/*": ["./styles/*"]
     }
   },
   "include": [

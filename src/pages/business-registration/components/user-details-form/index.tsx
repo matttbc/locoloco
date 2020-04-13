@@ -4,7 +4,7 @@ import { Button, Typography } from '@material-ui/core';
 
 import FormField from '@components/form-field';
 
-import styles from './styles';
+import styles from '@styles/forms';
 
 export type Values = {
   firstName: string;
