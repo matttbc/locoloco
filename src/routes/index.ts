@@ -5,7 +5,7 @@ import withAuthentication from '@hoc/with-authentication';
 
 const Landing = React.lazy(() => import('@pages/landing/components/root'));
 const AuthenticationCallback = React.lazy(() => import('@pages/authentication-callback/containers/root'));
-const BusinessRegistration = React.lazy(() => import('@pages/business-registration/containers/root'));
+const BusinessRegistration = React.lazy(() => import('@pages/business-registration/components/root'));
 
 export const AUTHENTICATION_CALLBACK_PATH = '/authentication/callback';
 export const AUTHENTICATION_RENEW_PATH = '/authentication/silent-renew';
