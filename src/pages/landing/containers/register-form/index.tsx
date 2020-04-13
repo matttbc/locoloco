@@ -21,20 +21,24 @@ export const ValidationSchema = Yup.object().shape({
     .required('Business name is required.'),
 });
 
+const mapStoreToInitialValues = (store) => ({
+  businessName: store.register.businessDetails.name,
+});
+
 const Form: React.FC<{}> = () => {
   const classes = styles();
   const history = useHistory();
   const { trade, session } = useStore();
 
   const onSubmit = (values: FormValues) => {
-    trade.name = values.businessName;
+    trade.register.businessDetails.name = values.businessName;
     history.push(REGISTER_BUSINESS_PATH);
   };
 
   return session.token
     ? (
       <Formik
-        initialValues={{ businessName: trade.name }}
+        initialValues={mapStoreToInitialValues(trade)}
         validationSchema={ValidationSchema}
         onSubmit={onSubmit}
       >

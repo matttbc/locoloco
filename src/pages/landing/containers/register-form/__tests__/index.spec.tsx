@@ -44,7 +44,11 @@ describe('RegisterForm container', () => {
 
   beforeEach(() => {
     trade = {
-      name: '',
+      register: {
+        businessDetails: {
+          name: 'PizzaHouse',
+        },
+      },
     };
     session = {
       token: 't123',
@@ -78,7 +82,7 @@ describe('RegisterForm container', () => {
         const wrapper = mount(<RegisterForm />);
         const props = wrapper.find(Formik).props() as any;
         expect(props.initialValues).toMatchObject({
-          businessName: trade.name,
+          businessName: trade.register.businessDetails.name,
         });
       });
     });
@@ -91,7 +95,7 @@ describe('RegisterForm container', () => {
         const props = wrapper.find(Formik).props() as any;
         const values = { businessName: 'PizzaHouse' };
         props.onSubmit(values);
-        expect(trade.name).toEqual(values.businessName);
+        expect(trade.register.businessDetails.name).toEqual(values.businessName);
         expect(history.push).toHaveBeenCalledWith('/register');
       });
     });

@@ -14,7 +14,17 @@ describe('Trade store', () => {
   describe('props', () => {
     it('should have the proper attributes', () => {
       expect(trade).toMatchObject({
-        name: '',
+        register: {
+          userDetails: {
+            firstName: '',
+            lastName: '',
+            role: '',
+            phone: '',
+          },
+          businessDetails: {
+            name: '',
+          },
+        },
       });
     });
   });
