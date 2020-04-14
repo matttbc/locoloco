@@ -6,12 +6,14 @@ import {
 
 import UserDetailsForm from '../../containers/user-details-form';
 import BusinessInfoForm from '../../containers/business-info-form';
+import BusinessDetailsForm from '../../containers/business-details-form';
 
 import styles from './styles';
 
 const STEPS_COMPONENTS = [
   UserDetailsForm,
   BusinessInfoForm,
+  BusinessDetailsForm,
 ];
 
 const BusinessRegistration: React.FC<{}> = () => {
