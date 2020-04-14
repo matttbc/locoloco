@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldProps } from 'formik';
+import { FieldProps, getIn } from 'formik';
 import { TextField } from '@material-ui/core';
 
 type Props = FieldProps & {
@@ -26,8 +26,8 @@ const TextFieldInput: React.FC<Props> = ({
     placeholder={placeholder}
     type={type}
     disabled={disabled}
-    error={form.touched[field.name] && !!form.errors[field.name]}
-    helperText={form.touched[field.name] && form.errors[field.name]}
+    error={getIn(form.touched, field.name) && !!getIn(form.errors, field.name)}
+    helperText={getIn(form.touched, field.name) && getIn(form.errors, field.name)}
     label={label}
     variant="outlined"
     fullWidth={fullWidth}

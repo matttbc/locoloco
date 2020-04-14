@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldProps } from 'formik';
+import { FieldProps, getIn } from 'formik';
 import {
   FormLabel,
   FormControlLabel,
@@ -32,7 +32,7 @@ const CheckboxGroup: React.FC<Props> = ({
   (
     <FormControl
       component="fieldset"
-      error={form.touched[field.name] && !!form.errors[field.name]}
+      error={getIn(form.touched, field.name) && !!getIn(form.errors, field.name)}
     >
       {label && <FormLabel component="legend">{label}</FormLabel>}
       {helpText && <FormHelperText>{helpText}</FormHelperText>}
@@ -53,8 +53,8 @@ const CheckboxGroup: React.FC<Props> = ({
           />
         ))}
       </FormGroup>
-      {form.touched[field.name] && !!form.errors[field.name] && (
-        <FormHelperText>{form.errors[field.name]}</FormHelperText>
+      {getIn(form.touched, field.name) && !!getIn(form.errors, field.name) && (
+        <FormHelperText>{getIn(form.errors, field.name)}</FormHelperText>
       )}
     </FormControl>
   )

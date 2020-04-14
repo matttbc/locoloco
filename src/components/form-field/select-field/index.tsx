@@ -1,5 +1,5 @@
 import React from 'react';
-import { FieldProps } from 'formik';
+import { FieldProps, getIn } from 'formik';
 import {
   Select,
   InputLabel,
@@ -31,7 +31,7 @@ const SelectFieldInput: React.FC<Props> = ({
 }: Props) => (
   <FormControl
     variant="outlined"
-    error={form.touched[field.name] && !!form.errors[field.name]}
+    error={getIn(form.touched, field.name) && !!getIn(form.errors, field.name)}
     fullWidth={fullWidth}
     disabled={disabled}
   >
@@ -49,8 +49,8 @@ const SelectFieldInput: React.FC<Props> = ({
         </option>
       ))}
     </Select>
-    {form.touched[field.name] && !!form.errors[field.name] && (
-      <FormHelperText>{form.errors[field.name]}</FormHelperText>
+    {getIn(form.touched, field.name) && !!getIn(form.errors, field.name) && (
+      <FormHelperText>{getIn(form.errors, field.name)}</FormHelperText>
     )}
   </FormControl>
 );
