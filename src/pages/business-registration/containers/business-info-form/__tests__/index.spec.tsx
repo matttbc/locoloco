@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 import { mocked } from 'ts-jest/utils';
 
 import { useStore } from '@store';
-import UserDetailsForm from '..';
+import BusinessInfoForm from '..';
 
 jest.mock('@store', () => ({
   useStore: jest.fn(),
@@ -35,7 +35,7 @@ describe('BusinessInfoForm container', () => {
   describe('render', () => {
     it('should render a BusinessInfoForm component', () => {
       mockedUseStore.mockReturnValue({ trade });
-      const wrapper = mount(<UserDetailsForm {...renderProps} />);
+      const wrapper = mount(<BusinessInfoForm {...renderProps} />);
       expect(wrapper.find('BusinessInfoForm').length).toEqual(1);
     });
   });
@@ -44,7 +44,7 @@ describe('BusinessInfoForm container', () => {
     describe('initial values', () => {
       it('should set the initial values from the store', () => {
         mockedUseStore.mockReturnValue({ trade });
-        const wrapper = mount(<UserDetailsForm {...renderProps} />);
+        const wrapper = mount(<BusinessInfoForm {...renderProps} />);
         const props = wrapper.find(Formik).props() as any;
         expect(props.initialValues).toMatchObject({
           name: trade.register.businessDetails.name,
@@ -58,7 +58,7 @@ describe('BusinessInfoForm container', () => {
     describe('submit', () => {
       it('should set store register business details props and call goToNextStep prop', () => {
         mockedUseStore.mockReturnValue({ trade });
-        const wrapper = mount(<UserDetailsForm {...renderProps} />);
+        const wrapper = mount(<BusinessInfoForm {...renderProps} />);
         const props = wrapper.find(Formik).props() as any;
         const values = {
           name: 'PizzaHot',
