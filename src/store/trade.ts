@@ -13,6 +13,16 @@ export type TradeStore = {
       postcode: string;
       offerType: string[];
       cuisineType: string[];
+      address: {
+        street: string;
+        number: string;
+        city: string;
+        county: string;
+      };
+      phone: string;
+      website: string;
+      openFor: string[];
+      openDays: string[];
     };
   };
 }
@@ -31,6 +41,16 @@ export default (): TradeStore => {
         postcode: '',
         offerType: [],
         cuisineType: [],
+        address: {
+          street: '',
+          number: '',
+          city: '',
+          county: '',
+        },
+        phone: '',
+        website: '',
+        openFor: [],
+        openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
       },
     },
   }));

@@ -26,6 +26,16 @@ describe('Trade store', () => {
             postcode: '',
             offerType: [],
             cuisineType: [],
+            address: {
+              street: '',
+              number: '',
+              city: '',
+              county: '',
+            },
+            phone: '',
+            website: '',
+            openFor: [],
+            openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
           },
         },
       });
