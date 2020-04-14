@@ -11,6 +11,7 @@
     "!src/routes/**",
     "!src/config/**",
     "!src/theme/**",
-    "!src/**/styles.*"
+    "!src/**/styles.*",
+    "!src/styles/*.*"
   ]
 }
