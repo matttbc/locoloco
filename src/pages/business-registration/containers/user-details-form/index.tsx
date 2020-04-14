@@ -1,6 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
+import { toJS } from 'mobx';
 
 import { useStore } from '@store';
 import UserDetailsForm from '../../components/user-details-form';
@@ -49,7 +50,7 @@ const Form: React.FC<Props> = ({ goToNextStep }: Props) => {
 
   return (
     <Formik
-      initialValues={mapStoreToInitialValues(trade)}
+      initialValues={mapStoreToInitialValues(toJS(trade))}
       validationSchema={ValidationSchema}
       onSubmit={onSubmit}
     >
