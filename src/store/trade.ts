@@ -10,6 +10,9 @@ export type TradeStore = {
     };
     businessDetails: {
       name: string;
+      postcode: string;
+      offerType: string[];
+      cuisineType: string[];
     };
   };
 }
@@ -25,6 +28,9 @@ export default (): TradeStore => {
       },
       businessDetails: {
         name: '',
+        postcode: '',
+        offerType: [],
+        cuisineType: [],
       },
     },
   }));

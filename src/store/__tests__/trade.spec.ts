@@ -23,6 +23,9 @@ describe('Trade store', () => {
           },
           businessDetails: {
             name: '',
+            postcode: '',
+            offerType: [],
+            cuisineType: [],
           },
         },
       });
