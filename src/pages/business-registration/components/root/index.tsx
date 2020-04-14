@@ -4,6 +4,7 @@ import {
   LinearProgress,
 } from '@material-ui/core';
 
+import Landing from '../landing';
 import UserDetailsForm from '../../containers/user-details-form';
 import BusinessInfoForm from '../../containers/business-info-form';
 import BusinessDetailsForm from '../../containers/business-details-form';
@@ -11,6 +12,7 @@ import BusinessDetailsForm from '../../containers/business-details-form';
 import styles from './styles';
 
 const STEPS_COMPONENTS = [
+  Landing,
   UserDetailsForm,
   BusinessInfoForm,
   BusinessDetailsForm,
