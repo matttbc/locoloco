@@ -25,7 +25,7 @@ const COMPONENTS_TYPES = {
 };
 
 const FormField: React.FC<Props> = (props: Props) => (
-  <Field {...props} component={COMPONENTS_TYPES[props.type] || TextField} />
+  <Field {...props} component={COMPONENTS_TYPES[props.type]} />
 );
 
 FormField.defaultProps = {
