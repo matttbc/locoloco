@@ -17,6 +17,7 @@ jest.mock('@hooks/session', () => ({
 }));
 
 describe('AuthenticationCallback container', () => {
+  let wrapper;
   const user = {
     id_token: 't123',
     token_type: 'Bearer',
@@ -42,10 +43,14 @@ describe('AuthenticationCallback container', () => {
     mockedUseLogin.mockClear();
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   it('should render a Loader component if login is in progress', () => {
     mockedUseStore.mockReturnValue({ session });
     mockedUseLogin.mockReturnValue({ loading: true, error: '' });
-    const wrapper = shallow(<AuthenticationCallback />);
+    wrapper = shallow(<AuthenticationCallback />);
     expect(wrapper.find('Loader').length).toEqual(1);
   });
 
@@ -53,14 +58,14 @@ describe('AuthenticationCallback container', () => {
     mockedUseStore.mockReturnValue({ session });
     const error = 'Login error!';
     mockedUseLogin.mockReturnValue({ loading: false, error });
-    const wrapper = shallow(<AuthenticationCallback />);
+    wrapper = shallow(<AuthenticationCallback />);
     expect(wrapper.find(Typography).text()).toEqual(error);
   });
 
   it('should render a redirect to the landing page if logon was successful', () => {
     mockedUseStore.mockReturnValue({ session });
     mockedUseLogin.mockReturnValue({ loading: false, error: '' });
-    const wrapper = shallow(<AuthenticationCallback />);
+    wrapper = shallow(<AuthenticationCallback />);
     expect(wrapper.find('Redirect').props()).toMatchObject({
       to: '/',
     });

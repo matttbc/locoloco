@@ -7,6 +7,7 @@ import PaymentDetailsForm, { Values } from '..';
 
 describe('PaymentDetailsForm component', () => {
   let renderProps;
+  let wrapper;
 
   beforeEach(() => {
     renderProps = {
@@ -16,9 +17,13 @@ describe('PaymentDetailsForm component', () => {
     };
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   describe('render', () => {
     it('should render a type checkbox group field', () => {
-      const wrapper = shallow(<PaymentDetailsForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<PaymentDetailsForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(0).props()).toMatchObject({
         name: 'type',
         type: 'checkboxGroup',
@@ -31,7 +36,7 @@ describe('PaymentDetailsForm component', () => {
 
     it('should render a stripe key and secret fields if type value includes "online"', () => {
       renderProps.values.type = ['online'];
-      const wrapper = shallow(<PaymentDetailsForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<PaymentDetailsForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(1).props()).toMatchObject({
         name: 'stripe.key',
         type: 'text',
@@ -44,7 +49,7 @@ describe('PaymentDetailsForm component', () => {
     });
 
     it('should render a submit button', () => {
-      const wrapper = shallow(<PaymentDetailsForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<PaymentDetailsForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find(Button).props()).toMatchObject({
         type: 'submit',
       });

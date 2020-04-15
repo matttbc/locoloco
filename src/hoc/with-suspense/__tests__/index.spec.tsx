@@ -10,13 +10,18 @@ describe('withSuspense hoc', () => {
     someProps: 'some value',
     children: 'mock',
   };
+  let wrapper;
+
+  afterEach(() => {
+    wrapper.unmount();
+  });
 
   describe('render', () => {
     it('should render the wrapped component', () => {
       const HOCComponent = withSuspense(
         Component,
       );
-      const wrapper = shallow(<HOCComponent {...renderProps} />);
+      wrapper = shallow(<HOCComponent {...renderProps} />);
       expect(wrapper.find(Component).length).toEqual(1);
       expect(wrapper.find(Component).props()).toMatchObject(renderProps);
     });

@@ -12,6 +12,7 @@ import CheckboxGroupInput from '..';
 describe('CheckboxGroupInput component', () => {
   describe('render', () => {
     let renderProps;
+    let wrapper;
 
     beforeEach(() => {
       renderProps = {
@@ -32,8 +33,12 @@ describe('CheckboxGroupInput component', () => {
       };
     });
 
+    afterEach(() => {
+      wrapper.unmount();
+    });
+
     it('should render a list of checkboxes', () => {
-      const wrapper = mount(<CheckboxGroupInput {...renderProps} />);
+      wrapper = mount(<CheckboxGroupInput {...renderProps} />);
       const formControlLabels = wrapper.find(FormControlLabel);
       renderProps.options.forEach((option, index) => {
         const label = formControlLabels.at(index);
@@ -50,7 +55,7 @@ describe('CheckboxGroupInput component', () => {
     });
 
     it('should render an helper text if helpText prop value is defined', () => {
-      let wrapper = shallow(<CheckboxGroupInput {...renderProps} />);
+      wrapper = shallow(<CheckboxGroupInput {...renderProps} />);
       expect(wrapper.find(FormHelperText).length).toEqual(0);
 
       renderProps.helpText = 'Help';
@@ -59,7 +64,7 @@ describe('CheckboxGroupInput component', () => {
     });
 
     it('should render a label if label prop value is defined', () => {
-      let wrapper = shallow(<CheckboxGroupInput {...renderProps} />);
+      wrapper = shallow(<CheckboxGroupInput {...renderProps} />);
       expect(wrapper.find(FormLabel).length).toEqual(0);
 
       renderProps.label = 'Role';
@@ -68,7 +73,7 @@ describe('CheckboxGroupInput component', () => {
     });
 
     it('should render an error if form field is touched and field error is defined', () => {
-      let wrapper = shallow(<CheckboxGroupInput {...renderProps} />);
+      wrapper = shallow(<CheckboxGroupInput {...renderProps} />);
       expect(wrapper.find(FormHelperText).length).toEqual(0);
 
       renderProps.form.touched[renderProps.field.name] = true;

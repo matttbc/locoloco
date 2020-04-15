@@ -10,9 +10,15 @@ import BusinessDetailsForm from '../../../containers/business-details-form';
 import PaymentDetailsForm from '../../../containers/payment-details-form';
 
 describe('BusinessRegistration page component', () => {
+  let wrapper;
+
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   describe('render', () => {
     it('should render the proper step component', () => {
-      const wrapper = shallow(<BusinessRegistration />);
+      wrapper = shallow(<BusinessRegistration />);
       let step = wrapper.find(Landing);
       expect(step.length).toEqual(1);
 
@@ -34,7 +40,7 @@ describe('BusinessRegistration page component', () => {
     });
 
     it('should render a LinearProgress component', () => {
-      const wrapper = shallow(<BusinessRegistration />);
+      wrapper = shallow(<BusinessRegistration />);
       wrapper.find(Landing).props().goToNextStep();
       expect(wrapper.find(LinearProgress).props().value).toEqual(20);
     });

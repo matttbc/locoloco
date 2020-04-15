@@ -7,6 +7,7 @@ import TextFieldInput from '..';
 describe('TextField component', () => {
   describe('render', () => {
     let renderProps;
+    let wrapper;
 
     beforeEach(() => {
       renderProps = {
@@ -23,8 +24,12 @@ describe('TextField component', () => {
       };
     });
 
+    afterEach(() => {
+      wrapper.unmount();
+    });
+
     it('should render a TextField', () => {
-      const wrapper = shallow(<TextFieldInput {...renderProps} />);
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
       const inputProps = wrapper.find(TextField).props();
       expect(inputProps.id).toEqual(renderProps.field.name);
       expect(inputProps.type).toEqual(renderProps.type);
@@ -33,7 +38,7 @@ describe('TextField component', () => {
     });
 
     it('should render a label if label prop value is defined', () => {
-      let wrapper = shallow(<TextFieldInput {...renderProps} />);
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
       let inputProps = wrapper.find(TextField).props();
       expect(inputProps.label).toEqual('');
 
@@ -44,7 +49,7 @@ describe('TextField component', () => {
     });
 
     it('should render an error if form field is touched and field error is defined', () => {
-      let wrapper = shallow(<TextFieldInput {...renderProps} />);
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
       let inputProps = wrapper.find(TextField).props();
       expect(inputProps.helperText).toBeUndefined();
 

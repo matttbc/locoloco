@@ -7,10 +7,15 @@ import RegisterForm, { Values } from '..';
 
 describe('RegisterForm component', () => {
   const renderProps = {};
+  let wrapper;
+
+  afterEach(() => {
+    wrapper.unmount();
+  });
 
   describe('render', () => {
     it('should render a businessName text field', () => {
-      const wrapper = shallow(<RegisterForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<RegisterForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').props()).toMatchObject({
         name: 'businessName',
         type: 'text',
@@ -18,7 +23,7 @@ describe('RegisterForm component', () => {
     });
 
     it('should render a submit button', () => {
-      const wrapper = shallow(<RegisterForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<RegisterForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find(Button).props()).toMatchObject({
         type: 'submit',
       });

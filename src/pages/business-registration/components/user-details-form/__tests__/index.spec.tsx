@@ -7,10 +7,15 @@ import UserDetailsFormForm, { Values } from '..';
 
 describe('UserDetailsForm component', () => {
   const renderProps = {};
+  let wrapper;
+
+  afterEach(() => {
+    wrapper.unmount();
+  });
 
   describe('render', () => {
     it('should render a firstName text field', () => {
-      const wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(0).props()).toMatchObject({
         name: 'firstName',
         type: 'text',
@@ -18,7 +23,7 @@ describe('UserDetailsForm component', () => {
     });
 
     it('should render a lastName text field', () => {
-      const wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(1).props()).toMatchObject({
         name: 'lastName',
         type: 'text',
@@ -26,7 +31,7 @@ describe('UserDetailsForm component', () => {
     });
 
     it('should render a role select field', () => {
-      const wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(2).props()).toMatchObject({
         name: 'role',
         type: 'select',
@@ -38,7 +43,7 @@ describe('UserDetailsForm component', () => {
     });
 
     it('should render a phone text field', () => {
-      const wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(3).props()).toMatchObject({
         name: 'phone',
         type: 'text',
@@ -46,7 +51,7 @@ describe('UserDetailsForm component', () => {
     });
 
     it('should render a submit button', () => {
-      const wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<UserDetailsFormForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find(Button).props()).toMatchObject({
         type: 'submit',
       });

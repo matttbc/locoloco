@@ -26,6 +26,7 @@ describe('withAuthentication hoc', () => {
     someProps: 'some value',
     children: 'mock',
   };
+  let wrapper;
 
   const mockedUseSession = mocked(useSessionStatus);
   const mockedUseStore = mocked(useStore);
@@ -43,6 +44,10 @@ describe('withAuthentication hoc', () => {
     mockedUseStore.mockClear();
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   describe('render', () => {
     it('should render a Loader component if session retrieving is in progress', () => {
       mockedUseStore.mockReturnValue({ session });
@@ -50,7 +55,7 @@ describe('withAuthentication hoc', () => {
       const HOCComponent = withAuthentication(
         Component,
       );
-      const wrapper = shallow(<HOCComponent {...renderProps} />);
+      wrapper = shallow(<HOCComponent {...renderProps} />);
       expect(wrapper.find('Loader').length).toEqual(1);
     });
 
@@ -61,7 +66,7 @@ describe('withAuthentication hoc', () => {
       const HOCComponent = withAuthentication(
         Component,
       );
-      const wrapper = shallow(<HOCComponent {...renderProps} />);
+      wrapper = shallow(<HOCComponent {...renderProps} />);
       expect(wrapper.find('Redirect').props()).toMatchObject({
         to: '/',
       });
@@ -74,7 +79,7 @@ describe('withAuthentication hoc', () => {
       const HOCComponent = withAuthentication(
         Component,
       );
-      const wrapper = shallow(<HOCComponent {...renderProps} />);
+      wrapper = shallow(<HOCComponent {...renderProps} />);
       expect(wrapper.find(Component).length).toEqual(1);
       expect(wrapper.find(Component).props()).toMatchObject(renderProps);
     });

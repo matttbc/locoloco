@@ -15,6 +15,7 @@ jest.mock('mobx-react', () => ({
 }));
 
 describe('Header container', () => {
+  let wrapper;
   let session;
   const mockedUseStore = mocked(useStore);
 
@@ -30,9 +31,13 @@ describe('Header container', () => {
     mockedUseStore.mockClear();
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   it('should render a Header component', () => {
     mockedUseStore.mockReturnValue({ session });
-    const wrapper = shallow(<Header />);
+    wrapper = shallow(<Header />);
     expect(wrapper.find('Header').props()).toMatchObject({
       isUserAuthenticated: true,
       username: session.username,
@@ -42,7 +47,7 @@ describe('Header container', () => {
   it('should pass a login prop connected to the login service', () => {
     jest.spyOn(services, 'login').mockReturnValue(Promise.resolve());
     mockedUseStore.mockReturnValue({ session });
-    const wrapper = shallow(<Header />);
+    wrapper = shallow(<Header />);
     const props = wrapper.find('Header').props() as any;
     props.login();
     expect(services.login).toHaveBeenCalled();
@@ -52,7 +57,7 @@ describe('Header container', () => {
     const promise = Promise.resolve();
     jest.spyOn(services, 'logout').mockReturnValue(promise);
     mockedUseStore.mockReturnValue({ session });
-    const wrapper = shallow(<Header />);
+    wrapper = shallow(<Header />);
     const props = wrapper.find('Header').props() as any;
     props.logout();
     return promise.then(() => {

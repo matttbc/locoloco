@@ -9,6 +9,7 @@ import CheckboxGroupField from '../checkbox-group';
 
 describe('FormField component', () => {
   let renderProps;
+  let wrapper;
 
   describe('render', () => {
     beforeEach(() => {
@@ -18,27 +19,31 @@ describe('FormField component', () => {
       };
     });
 
+    afterEach(() => {
+      wrapper.unmount();
+    });
+
     it('should render a FieldWrapper component wrapped in a formik Field component', () => {
-      const wrapper = shallow(<FormField {...renderProps} />);
+      wrapper = shallow(<FormField {...renderProps} />);
       const fieldProps = wrapper.find(Field).props();
       expect(fieldProps.name).toEqual(renderProps.name);
       expect(fieldProps.component).toEqual(FieldWrapper);
     });
 
     it('should render a TextField component if type prop value is text', () => {
-      const wrapper = shallow(<FieldWrapper {...renderProps} />);
+      wrapper = shallow(<FieldWrapper {...renderProps} />);
       expect(wrapper.find(TextField).length).toEqual(1);
     });
 
     it('should render a SelectField component if type prop value is select', () => {
       renderProps.type = 'select';
-      const wrapper = shallow(<FieldWrapper {...renderProps} />);
+      wrapper = shallow(<FieldWrapper {...renderProps} />);
       expect(wrapper.find(SelectField).length).toEqual(1);
     });
 
     it('should render a CheckboxGroupField component if type prop value is checkboxGroup', () => {
       renderProps.type = 'checkboxGroup';
-      const wrapper = shallow(<FieldWrapper {...renderProps} />);
+      wrapper = shallow(<FieldWrapper {...renderProps} />);
       expect(wrapper.find(CheckboxGroupField).length).toEqual(1);
     });
   });
@@ -64,7 +69,7 @@ describe('FormField component', () => {
     });
 
     it('should reset form field value, error and touched props', () => {
-      const wrapper = mount(<FieldWrapper {...renderProps} />);
+      wrapper = mount(<FieldWrapper {...renderProps} />);
       wrapper.unmount();
       expect(renderProps.form.setFieldValue).toHaveBeenCalledWith(
         renderProps.field.name,

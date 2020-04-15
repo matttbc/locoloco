@@ -6,6 +6,7 @@ import Header from '..';
 
 describe('Header component', () => {
   let renderProps;
+  let wrapper;
 
   beforeEach(() => {
     renderProps = {
@@ -14,10 +15,14 @@ describe('Header component', () => {
     };
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   describe('render', () => {
     it('should render a logout button if isUserAuthenticated prop value is truthy', () => {
       renderProps.isUserAuthenticated = true;
-      const wrapper = shallow(<Header {...renderProps} />);
+      wrapper = shallow(<Header {...renderProps} />);
       expect(wrapper.find(Button).length).toEqual(1);
     });
 
@@ -25,13 +30,13 @@ describe('Header component', () => {
       + ' username prop value is defined', () => {
       renderProps.isUserAuthenticated = true;
       renderProps.username = 'john.c';
-      const wrapper = shallow(<Header {...renderProps} />);
+      wrapper = shallow(<Header {...renderProps} />);
       expect(wrapper.find(Typography).at(1).text()).toEqual(renderProps.username);
     });
 
     it('should render a login button if isUserAuthenticated prop value is falsy', () => {
       renderProps.isUserAuthenticated = false;
-      const wrapper = shallow(<Header {...renderProps} />);
+      wrapper = shallow(<Header {...renderProps} />);
       expect(wrapper.find(Button).length).toEqual(1);
     });
   });
@@ -39,14 +44,14 @@ describe('Header component', () => {
   describe('events handlers', () => {
     it('should call login prop on login button click', () => {
       renderProps.isUserAuthenticated = false;
-      const wrapper = shallow(<Header {...renderProps} />);
+      wrapper = shallow(<Header {...renderProps} />);
       wrapper.find(Button).props().onClick({} as React.MouseEvent<HTMLButtonElement>);
       expect(renderProps.login).toHaveBeenCalled();
     });
 
     it('should call logout prop on logout button click', () => {
       renderProps.isUserAuthenticated = true;
-      const wrapper = shallow(<Header {...renderProps} />);
+      wrapper = shallow(<Header {...renderProps} />);
       wrapper.find(Button).props().onClick({} as React.MouseEvent<HTMLButtonElement>);
       expect(renderProps.logout).toHaveBeenCalled();
     });

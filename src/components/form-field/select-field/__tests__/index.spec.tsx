@@ -12,6 +12,7 @@ import SelectFieldInput from '..';
 describe('SelectField component', () => {
   describe('render', () => {
     let renderProps;
+    let wrapper;
 
     beforeEach(() => {
       renderProps = {
@@ -30,8 +31,12 @@ describe('SelectField component', () => {
       };
     });
 
+    afterEach(() => {
+      wrapper.unmount();
+    });
+
     it('should render a Select and a list of options', () => {
-      const wrapper = shallow(<SelectFieldInput {...renderProps} />);
+      wrapper = shallow(<SelectFieldInput {...renderProps} />);
       expect(wrapper.find(Select).props()).toMatchObject({
         id: renderProps.field.name,
       });
@@ -50,7 +55,7 @@ describe('SelectField component', () => {
     });
 
     it('should render a label if label prop value is defined', () => {
-      let wrapper = shallow(<SelectFieldInput {...renderProps} />);
+      wrapper = shallow(<SelectFieldInput {...renderProps} />);
       expect(wrapper.find(InputLabel).length).toEqual(0);
 
       renderProps.label = 'Role';
@@ -59,7 +64,7 @@ describe('SelectField component', () => {
     });
 
     it('should render an error if form field is touched and field error is defined', () => {
-      let wrapper = shallow(<SelectFieldInput {...renderProps} />);
+      wrapper = shallow(<SelectFieldInput {...renderProps} />);
       expect(wrapper.find(FormHelperText).length).toEqual(0);
 
       renderProps.form.touched[renderProps.field.name] = true;

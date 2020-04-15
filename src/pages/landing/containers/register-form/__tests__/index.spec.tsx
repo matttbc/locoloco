@@ -19,6 +19,7 @@ jest.mock('@store', () => ({
 }));
 
 describe('RegisterForm container', () => {
+  let wrapper;
   let trade;
   let session;
   const history = {
@@ -57,10 +58,14 @@ describe('RegisterForm container', () => {
     mockedUseHistory.mockClear();
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   describe('render', () => {
     it('should render a RegisterForm component if session token value is truthy', () => {
       mockedUseStore.mockReturnValue({ trade, session });
-      const wrapper = mount(<RegisterForm />);
+      wrapper = mount(<RegisterForm />);
       expect(wrapper.find('RegisterForm').length).toEqual(1);
     });
 
@@ -68,7 +73,7 @@ describe('RegisterForm container', () => {
       jest.spyOn(authServices, 'login').mockReturnValue(Promise.resolve());
       session.token = '';
       mockedUseStore.mockReturnValue({ trade, session });
-      const wrapper = mount(<RegisterForm />);
+      wrapper = mount(<RegisterForm />);
       expect(wrapper.find('RegisterForm').length).toEqual(0);
       wrapper.find(Button).props().onClick({} as React.MouseEvent<HTMLButtonElement>);
       expect(authServices.login).toHaveBeenCalled();
@@ -79,7 +84,7 @@ describe('RegisterForm container', () => {
     describe('initial values', () => {
       it('should set the initial values from the store', () => {
         mockedUseStore.mockReturnValue({ trade, session });
-        const wrapper = mount(<RegisterForm />);
+        wrapper = mount(<RegisterForm />);
         const props = wrapper.find(Formik).props() as any;
         expect(props.initialValues).toMatchObject({
           businessName: trade.register.businessDetails.name,
@@ -91,7 +96,7 @@ describe('RegisterForm container', () => {
       it('should set store name props and redirect to the registration path', () => {
         mockedUseHistory.mockReturnValue(history);
         mockedUseStore.mockReturnValue({ trade, session });
-        const wrapper = mount(<RegisterForm />);
+        wrapper = mount(<RegisterForm />);
         const props = wrapper.find(Formik).props() as any;
         const values = { businessName: 'PizzaHouse' };
         props.onSubmit(values);

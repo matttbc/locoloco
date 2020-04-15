@@ -11,6 +11,7 @@ jest.mock('@store', () => ({
 }));
 
 describe('UserDetailsForm container', () => {
+  let wrapper;
   let renderProps;
   let trade;
   const mockedUseStore = mocked(useStore);
@@ -32,10 +33,14 @@ describe('UserDetailsForm container', () => {
     mockedUseStore.mockClear();
   });
 
+  afterEach(() => {
+    wrapper.unmount();
+  });
+
   describe('render', () => {
     it('should render a UserDetailsForm component', () => {
       mockedUseStore.mockReturnValue({ trade });
-      const wrapper = mount(<UserDetailsForm {...renderProps} />);
+      wrapper = mount(<UserDetailsForm {...renderProps} />);
       expect(wrapper.find('UserDetailsForm').length).toEqual(1);
     });
   });
@@ -44,7 +49,7 @@ describe('UserDetailsForm container', () => {
     describe('initial values', () => {
       it('should set the initial values from the store', () => {
         mockedUseStore.mockReturnValue({ trade });
-        const wrapper = mount(<UserDetailsForm {...renderProps} />);
+        wrapper = mount(<UserDetailsForm {...renderProps} />);
         const props = wrapper.find(Formik).props() as any;
         expect(props.initialValues).toMatchObject({
           firstName: trade.register.userDetails.firstName,
@@ -58,7 +63,7 @@ describe('UserDetailsForm container', () => {
     describe('submit', () => {
       it('should set store register user details props and call goToNextStep prop', () => {
         mockedUseStore.mockReturnValue({ trade });
-        const wrapper = mount(<UserDetailsForm {...renderProps} />);
+        wrapper = mount(<UserDetailsForm {...renderProps} />);
         const props = wrapper.find(Formik).props() as any;
         const values = {
           firstName: 'Joe',

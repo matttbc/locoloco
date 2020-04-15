@@ -8,10 +8,15 @@ describe('Store', () => {
     useStore();
     return <span>mock</span>;
   };
+  let wrapper;
 
   describe('StoreProvider', () => {
+    afterEach(() => {
+      wrapper.unmount();
+    });
+
     it('should pass the stores via a context provider', () => {
-      const wrapper = shallow(
+      wrapper = shallow(
         <StoreProvider>
           <Component />
         </StoreProvider>,
