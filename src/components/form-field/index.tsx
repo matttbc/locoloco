@@ -1,20 +1,12 @@
 /* eslint-disable react/destructuring-assignment */
 import React from 'react';
-import { Field } from 'formik';
+import { Field, FieldProps, getIn } from 'formik';
 
-import TextField from './text-field';
-import SelectField, { Option as SelectOption } from './select-field';
-import CheckboxGroup, { Option as CheckboxGroupOption } from './checkbox-group';
+import TextField, { Props as TextFieldProps } from './text-field';
+import SelectField, { Props as SelectFieldProps } from './select-field';
+import CheckboxGroup, { Props as CheckboxGroupProps } from './checkbox-group';
 
-type Props = {
-  type: 'text' | 'password' | 'select' | 'checkboxGroup';
-  name: string;
-  label: string;
-  placeholder?: string;
-  fullWidth?: boolean;
-  helpText?: string;
-  options?: SelectOption[] | CheckboxGroupOption[];
-}
+type Props = TextFieldProps | SelectFieldProps | CheckboxGroupProps;
 
 const COMPONENTS_TYPES = {
   text: TextField,
@@ -24,8 +16,23 @@ const COMPONENTS_TYPES = {
   checkboxGroup: CheckboxGroup,
 };
 
+export const FieldWrapper: React.FC<Props & FieldProps> = (props: Props & FieldProps) => {
+  const { form, field } = props;
+
+  React.useEffect(() => (
+    () => {
+      form.setFieldValue(field.name, getIn(form.initialValues, field.name));
+      form.setFieldError(field.name, '');
+      form.setFieldTouched(field.name, false);
+    }
+  ), []);
+
+  const FieldComponent = COMPONENTS_TYPES[props.type];
+  return <FieldComponent {...props} />;
+};
+
 const FormField: React.FC<Props> = (props: Props) => (
-  <Field {...props} component={COMPONENTS_TYPES[props.type]} />
+  <Field {...props} component={FieldWrapper} />
 );
 
 FormField.defaultProps = {

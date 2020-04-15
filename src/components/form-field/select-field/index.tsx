@@ -7,28 +7,28 @@ import {
   FormHelperText,
 } from '@material-ui/core';
 
-export type Option = {
+type Option = {
   text: string;
   value: string | number;
 };
 
-type Props = FieldProps & {
-  name: string;
+export type Props = {
   type: string;
-  label: string;
+  name: string;
+  label?: string;
   options: Option[];
-  disabled: boolean;
-  fullWidth: boolean;
+  disabled?: boolean;
+  fullWidth?: boolean;
 }
 
-const SelectFieldInput: React.FC<Props> = ({
+const SelectFieldInput: React.FC<Props & FieldProps> = ({
   label,
   field,
   disabled,
   options,
   fullWidth,
   form,
-}: Props) => (
+}: Props & FieldProps) => (
   <FormControl
     variant="outlined"
     error={getIn(form.touched, field.name) && !!getIn(form.errors, field.name)}

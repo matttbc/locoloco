@@ -2,16 +2,16 @@ import React from 'react';
 import { FieldProps, getIn } from 'formik';
 import { TextField } from '@material-ui/core';
 
-type Props = FieldProps & {
+export type Props = {
   name: string;
   type: string;
-  label: string;
-  placeholder: string;
-  disabled: boolean;
-  fullWidth: boolean;
+  label?: string;
+  placeholder?: string;
+  disabled?: boolean;
+  fullWidth?: boolean;
 }
 
-const TextFieldInput: React.FC<Props> = ({
+const TextFieldInput: React.FC<Props & FieldProps> = ({
   type,
   label,
   field,
@@ -19,7 +19,7 @@ const TextFieldInput: React.FC<Props> = ({
   disabled,
   fullWidth,
   form,
-}: Props) => (
+}: Props & FieldProps) => (
   <TextField
     {...field}
     id={field.name}

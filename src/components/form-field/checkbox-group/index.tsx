@@ -9,26 +9,26 @@ import {
   FormGroup,
 } from '@material-ui/core';
 
-export type Option = {
+type Option = {
   label: string;
   value: string | number;
   disabled?: boolean;
 };
 
-type Props = FieldProps & {
+export type Props = {
   type: string;
-  label: string;
+  label?: string;
   options: Option[];
-  helpText: string;
+  helpText?: string;
 }
 
-const CheckboxGroup: React.FC<Props> = ({
+const CheckboxGroup: React.FC<Props & FieldProps> = ({
   field,
   label,
   options,
   helpText,
   form,
-}: Props) => (
+}: Props & FieldProps) => (
   (
     <FormControl
       component="fieldset"
