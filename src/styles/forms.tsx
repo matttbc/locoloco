@@ -16,6 +16,9 @@ export default makeStyles({
   },
   formGroup: {
     marginBottom: '40px',
+    '& > *': {
+      marginBottom: '20px',
+    },
   },
   submitButton: {
     display: 'block',
