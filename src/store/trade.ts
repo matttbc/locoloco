@@ -24,6 +24,13 @@ export type TradeStore = {
       openFor: string[];
       openDays: string[];
     };
+    paymentDetails: {
+      type: string[];
+      stripe: {
+        key: string;
+        secret: string;
+      };
+    };
   };
 }
 
@@ -51,6 +58,13 @@ export default (): TradeStore => {
         website: '',
         openFor: [],
         openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+      },
+      paymentDetails: {
+        type: [],
+        stripe: {
+          key: '',
+          secret: '',
+        },
       },
     },
   }));

@@ -37,6 +37,13 @@ describe('Trade store', () => {
             openFor: [],
             openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
           },
+          paymentDetails: {
+            type: [],
+            stripe: {
+              key: '',
+              secret: '',
+            },
+          },
         },
       });
     });
