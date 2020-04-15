@@ -37,6 +37,12 @@ describe('Trade store', () => {
             openFor: [],
             openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
           },
+          deliveryInfo: {
+            deliveryOptions: [],
+            minimumOrder: '',
+            deliveryCharge: '',
+            acceptedPostcodes: [],
+          },
           paymentDetails: {
             type: [],
             stripe: {

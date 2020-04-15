@@ -24,6 +24,12 @@ export type TradeStore = {
       openFor: string[];
       openDays: string[];
     };
+    deliveryInfo: {
+      deliveryOptions: string[];
+      minimumOrder: string;
+      deliveryCharge: string;
+      acceptedPostcodes: string[];
+    };
     paymentDetails: {
       type: string[];
       stripe: {
@@ -58,6 +64,12 @@ export default (): TradeStore => {
         website: '',
         openFor: [],
         openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
+      },
+      deliveryInfo: {
+        deliveryOptions: [],
+        minimumOrder: '',
+        deliveryCharge: '',
+        acceptedPostcodes: [],
       },
       paymentDetails: {
         type: [],
