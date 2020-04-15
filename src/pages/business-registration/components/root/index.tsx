@@ -8,6 +8,7 @@ import Landing from '../landing';
 import UserDetailsForm from '../../containers/user-details-form';
 import BusinessInfoForm from '../../containers/business-info-form';
 import BusinessDetailsForm from '../../containers/business-details-form';
+import PaymentDetailsForm from '../../containers/payment-details-form';
 
 import styles from './styles';
 
@@ -16,6 +17,7 @@ const STEPS_COMPONENTS = [
   UserDetailsForm,
   BusinessInfoForm,
   BusinessDetailsForm,
+  PaymentDetailsForm,
 ];
 
 const BusinessRegistration: React.FC<{}> = () => {

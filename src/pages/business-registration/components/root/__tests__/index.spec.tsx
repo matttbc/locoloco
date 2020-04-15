@@ -7,6 +7,7 @@ import Landing from '../../landing';
 import UserDetailsForm from '../../../containers/user-details-form';
 import BusinessInfoForm from '../../../containers/business-info-form';
 import BusinessDetailsForm from '../../../containers/business-details-form';
+import PaymentDetailsForm from '../../../containers/payment-details-form';
 
 describe('BusinessRegistration page component', () => {
   describe('render', () => {
@@ -26,12 +27,16 @@ describe('BusinessRegistration page component', () => {
       step.props().goToNextStep();
       step = wrapper.find(BusinessDetailsForm);
       expect(step.length).toEqual(1);
+
+      step.props().goToNextStep();
+      step = wrapper.find(PaymentDetailsForm);
+      expect(step.length).toEqual(1);
     });
 
     it('should render a LinearProgress component', () => {
       const wrapper = shallow(<BusinessRegistration />);
       wrapper.find(Landing).props().goToNextStep();
-      expect(wrapper.find(LinearProgress).props().value).toEqual(25);
+      expect(wrapper.find(LinearProgress).props().value).toEqual(20);
     });
   });
 });
