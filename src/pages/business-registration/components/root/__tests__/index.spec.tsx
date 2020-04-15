@@ -7,6 +7,7 @@ import Landing from '../../landing';
 import UserDetailsForm from '../../../containers/user-details-form';
 import BusinessInfoForm from '../../../containers/business-info-form';
 import BusinessDetailsForm from '../../../containers/business-details-form';
+import DeliveryInfoForm from '../../../containers/delivery-info-form';
 import PaymentDetailsForm from '../../../containers/payment-details-form';
 
 describe('BusinessRegistration page component', () => {
@@ -32,6 +33,10 @@ describe('BusinessRegistration page component', () => {
 
       step.props().goToNextStep();
       step = wrapper.find(BusinessDetailsForm);
+      expect(step.length).toEqual(1);
+
+      step.props().goToNextStep();
+      step = wrapper.find(DeliveryInfoForm);
       expect(step.length).toEqual(1);
 
       step.props().goToNextStep();
