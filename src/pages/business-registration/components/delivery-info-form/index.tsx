@@ -40,7 +40,7 @@ const DeliveryInfoForm: React.FC<FormikProps<Values>> = () => {
             label="Enter your minimum order value"
             name="minimumOrder"
             fullWidth
-            type="text"
+            type="number"
             helpText="If you don't have one then leave blank"
           />
         </div>
@@ -49,7 +49,7 @@ const DeliveryInfoForm: React.FC<FormikProps<Values>> = () => {
             label="Enter your delivery charge"
             name="deliveryCharge"
             fullWidth
-            type="text"
+            type="number"
             helpText="If delivery is free then enter 0"
           />
         </div>

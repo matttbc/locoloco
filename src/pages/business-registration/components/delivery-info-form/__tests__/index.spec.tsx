@@ -6,11 +6,16 @@ import { shallow } from 'enzyme';
 import DeliveryInfoForm, { Values } from '..';
 
 describe('DeliveryInfoForm component', () => {
+  let wrapper;
   const renderProps = {};
+
+  afterEach(() => {
+    wrapper.unmount();
+  });
 
   describe('render', () => {
     it('should render deliveryOptions checkbox group field', () => {
-      const wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(0).props()).toMatchObject({
         name: 'deliveryOptions',
         type: 'checkboxGroup',
@@ -22,23 +27,23 @@ describe('DeliveryInfoForm component', () => {
     });
 
     it('should render a minimum order text field', () => {
-      const wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(1).props()).toMatchObject({
         name: 'minimumOrder',
-        type: 'text',
+        type: 'number',
       });
     });
 
     it('should render a delivery charge text field', () => {
-      const wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(2).props()).toMatchObject({
         name: 'deliveryCharge',
-        type: 'text',
+        type: 'number',
       });
     });
 
     it('should render a accepted postcodes text field', () => {
-      const wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(3).props()).toMatchObject({
         name: 'acceptedPostcodes',
         type: 'text',
@@ -46,7 +51,7 @@ describe('DeliveryInfoForm component', () => {
     });
 
     it('should render a submit button', () => {
-      const wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
+      wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find(Button).props()).toMatchObject({
         type: 'submit',
       });

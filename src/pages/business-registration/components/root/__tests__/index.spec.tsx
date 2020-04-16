@@ -47,7 +47,7 @@ describe('BusinessRegistration page component', () => {
     it('should render a LinearProgress component', () => {
       wrapper = shallow(<BusinessRegistration />);
       wrapper.find(Landing).props().goToNextStep();
-      expect(wrapper.find(LinearProgress).props().value).toEqual(20);
+      expect(wrapper.find(LinearProgress).props().value).toEqual(17);
     });
   });
 });

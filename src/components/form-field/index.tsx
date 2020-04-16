@@ -10,6 +10,7 @@ type Props = TextFieldProps | SelectFieldProps | CheckboxGroupProps;
 
 const COMPONENTS_TYPES = {
   text: TextField,
+  number: TextField,
   hidden: TextField,
   password: TextField,
   select: SelectField,
