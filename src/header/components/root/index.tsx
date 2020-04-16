@@ -34,7 +34,7 @@ const Header: React.FC<Props> = ({
         color="primary"
         className={classes.logo}
       >
-        LocoLoco
+        Loql
       </Typography>
       {isUserAuthenticated && (
         <>
