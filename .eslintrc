@@ -29,7 +29,8 @@
     "expect": true,
     "require": true,
     "jest": true,
-    "Generator": false
+    "Generator": true,
+    "FileReader": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".tsx", ".jsx", ".js"] }],
