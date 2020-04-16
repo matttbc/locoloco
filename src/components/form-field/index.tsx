@@ -5,8 +5,9 @@ import { Field, FieldProps, getIn } from 'formik';
 import TextField, { Props as TextFieldProps } from './text-field';
 import SelectField, { Props as SelectFieldProps } from './select-field';
 import CheckboxGroup, { Props as CheckboxGroupProps } from './checkbox-group';
+import FileSelectField, { Props as FieldFieldProps } from './file-select-field';
 
-type Props = TextFieldProps | SelectFieldProps | CheckboxGroupProps;
+type Props = TextFieldProps | SelectFieldProps | CheckboxGroupProps | FieldFieldProps;
 
 const COMPONENTS_TYPES = {
   text: TextField,
@@ -15,6 +16,7 @@ const COMPONENTS_TYPES = {
   password: TextField,
   select: SelectField,
   checkboxGroup: CheckboxGroup,
+  file: FileSelectField,
 };
 
 export const FieldWrapper: React.FC<Props & FieldProps> = (props: Props & FieldProps) => {
