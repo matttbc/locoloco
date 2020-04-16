@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { TextField } from '@material-ui/core';
+import { FormHelperText, TextField } from '@material-ui/core';
 
 import TextFieldInput from '..';
 
@@ -46,6 +46,15 @@ describe('TextField component', () => {
       wrapper = shallow(<TextFieldInput {...renderProps} />);
       inputProps = wrapper.find(TextField).props();
       expect(inputProps.label).toEqual(renderProps.label);
+    });
+
+    it('should render an helper text if helpText prop value is defined', () => {
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
+      expect(wrapper.find(FormHelperText).length).toEqual(0);
+
+      renderProps.helpText = 'Help';
+      wrapper = shallow(<TextFieldInput {...renderProps} />);
+      expect(wrapper.find(FormHelperText).text()).toEqual(renderProps.helpText);
     });
 
     it('should render an error if form field is touched and field error is defined', () => {

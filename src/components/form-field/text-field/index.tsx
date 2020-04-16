@@ -1,6 +1,6 @@
 import React from 'react';
 import { FieldProps, getIn } from 'formik';
-import { TextField } from '@material-ui/core';
+import { TextField, FormControl, FormHelperText } from '@material-ui/core';
 
 export type Props = {
   name: string;
@@ -9,6 +9,7 @@ export type Props = {
   placeholder?: string;
   disabled?: boolean;
   fullWidth?: boolean;
+  helpText?: string;
 }
 
 const TextFieldInput: React.FC<Props & FieldProps> = ({
@@ -18,20 +19,23 @@ const TextFieldInput: React.FC<Props & FieldProps> = ({
   placeholder,
   disabled,
   fullWidth,
+  helpText,
   form,
 }: Props & FieldProps) => (
-  <TextField
-    {...field}
-    id={field.name}
-    placeholder={placeholder}
-    type={type}
-    disabled={disabled}
-    error={getIn(form.touched, field.name) && !!getIn(form.errors, field.name)}
-    helperText={getIn(form.touched, field.name) && getIn(form.errors, field.name)}
-    label={label}
-    variant="outlined"
-    fullWidth={fullWidth}
-  />
+  <FormControl fullWidth={fullWidth}>
+    <TextField
+      {...field}
+      id={field.name}
+      placeholder={placeholder}
+      type={type}
+      disabled={disabled}
+      error={getIn(form.touched, field.name) && !!getIn(form.errors, field.name)}
+      helperText={getIn(form.touched, field.name) && getIn(form.errors, field.name)}
+      label={label}
+      variant="outlined"
+    />
+    {helpText && <FormHelperText>{helpText}</FormHelperText>}
+  </FormControl>
 );
 
 TextFieldInput.defaultProps = {
