@@ -37,7 +37,7 @@ describe('Trade store', () => {
             openFor: [],
             openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
           },
-          deliveryInfo: {
+          deliveryDetails: {
             deliveryOptions: [],
             minimumOrder: '',
             deliveryCharge: '',

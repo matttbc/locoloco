@@ -1,3 +1,4 @@
+/* eslint-disable no-confusing-arrow */
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -21,27 +22,52 @@ export const ValidationSchema = Yup.object().shape({
   deliveryOptions: Yup
     .array()
     .required('A delivery option is required.'),
+  minimumOrder: Yup
+    .number()
+    .positive('Minimum order should be a positive number.')
+    .test(
+      'maxDecimals',
+      'Minimum order should have max 2 decimals.',
+      (value) => value ? /^\s*(?=.*[1-9])\d*(?:\.\d{1,2})?\s*$/.test(value.toString()) : true,
+    ),
   deliveryCharge: Yup
-    .string()
-    .required('A delivery charge value is required.'),
+    .number()
+    .when('deliveryOptions', {
+      is: (value) => value.includes('localDelivery'),
+      then: Yup
+        .number()
+        .required('Delivery charge is required.')
+        .min(0, 'Delivery charge should be at least 0.')
+        .test(
+          'maxDecimals',
+          'Delivery charge should have max 2 decimals.',
+          (value) => value ? /^\s*(?=.*[1-9])\d*(?:\.\d{1,2})?\s*$/.test(value.toString()) : true,
+        ),
+    }),
   acceptedPostcodes: Yup
     .string()
-    .required('At least 1 postcode area is required'),
+    .when('deliveryOptions', {
+      is: (value) => value.includes('localDelivery'),
+      then: Yup
+        .string()
+        .required('At least 1 postcode area is required'),
+    }),
 });
 
 const mapStoreToInitialValues = (store) => ({
-  deliveryOptions: store.register.deliveryInfo.deliveryOptions,
-  minimumOrder: store.register.deliveryInfo.minimumOrder,
-  deliveryCharge: store.register.deliveryInfo.deliveryCharge,
-  acceptedPostcodes: store.register.deliveryInfo.acceptedPostcodes,
+  deliveryOptions: store.register.deliveryDetails.deliveryOptions,
+  minimumOrder: store.register.deliveryDetails.minimumOrder,
+  deliveryCharge: store.register.deliveryDetails.deliveryCharge,
+  acceptedPostcodes: store.register.deliveryDetails.acceptedPostcodes,
 });
 
 const Form: React.FC<Props> = ({ goToNextStep }: Props) => {
   const { trade } = useStore();
 
   const onSubmit = (values: FormValues) => {
-    trade.register.deliveryInfo = {
-      ...toJS(trade.register.deliveryInfo),
+    console.log(values);
+    trade.register.deliveryDetails = {
+      ...toJS(trade.register.deliveryDetails),
       ...values,
     };
     goToNextStep();

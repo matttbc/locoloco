@@ -24,7 +24,7 @@ export type TradeStore = {
       openFor: string[];
       openDays: string[];
     };
-    deliveryInfo: {
+    deliveryDetails: {
       deliveryOptions: string[];
       minimumOrder: string;
       deliveryCharge: string;
@@ -65,7 +65,7 @@ export default (): TradeStore => {
         openFor: [],
         openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
       },
-      deliveryInfo: {
+      deliveryDetails: {
         deliveryOptions: [],
         minimumOrder: '',
         deliveryCharge: '',

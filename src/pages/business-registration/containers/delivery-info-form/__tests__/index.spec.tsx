@@ -21,7 +21,7 @@ describe('DeliveryInfoForm container', () => {
     };
     trade = {
       register: {
-        deliveryInfo: {
+        deliveryDetails: {
           deliveryOptions: ['localDelivery'],
           minimumOrder: '10.00',
           deliveryCharge: '3.50',
@@ -47,10 +47,10 @@ describe('DeliveryInfoForm container', () => {
         const wrapper = mount(<DeliveryInfoForm {...renderProps} />);
         const props = wrapper.find(Formik).props() as any;
         expect(props.initialValues).toMatchObject({
-          deliveryOptions: trade.register.deliveryInfo.deliveryOptions,
-          minimumOrder: trade.register.deliveryInfo.minimumOrder,
-          deliveryCharge: trade.register.deliveryInfo.deliveryCharge,
-          acceptedPostcodes: trade.register.deliveryInfo.acceptedPostcodes,
+          deliveryOptions: trade.register.deliveryDetails.deliveryOptions,
+          minimumOrder: trade.register.deliveryDetails.minimumOrder,
+          deliveryCharge: trade.register.deliveryDetails.deliveryCharge,
+          acceptedPostcodes: trade.register.deliveryDetails.acceptedPostcodes,
         });
       });
     });
@@ -64,11 +64,10 @@ describe('DeliveryInfoForm container', () => {
           deliveryOptions: ['takeaway', 'localDelivery'],
           minimumOrder: '20.00',
           deliveryCharge: '2.50',
-          // Improve testing and code around comma separated postcodes
-          acceptedPostcodes: ['N15, N8'],
+          acceptedPostcodes: 'N15, N8',
         };
         props.onSubmit(values);
-        expect(trade.register.deliveryInfo).toMatchObject(values);
+        expect(trade.register.deliveryDetails).toMatchObject(values);
         expect(renderProps.goToNextStep).toHaveBeenCalled();
       });
     });
