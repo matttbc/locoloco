@@ -13,7 +13,7 @@ export type Values = {
   acceptedPostcodes: string[];
 };
 
-const DeliveryInfoForm: React.FC<FormikProps<Values>> = () => {
+const DeliveryInfoForm: React.FC<FormikProps<Values>> = ({ values }: FormikProps<Values>) => {
   const classes = styles();
 
   return (
@@ -44,24 +44,28 @@ const DeliveryInfoForm: React.FC<FormikProps<Values>> = () => {
             helpText="If you don't have one then leave blank"
           />
         </div>
-        <div className={classes.formGroup}>
-          <FormField
-            label="Enter your delivery charge"
-            name="deliveryCharge"
-            fullWidth
-            type="number"
-            helpText="If delivery is free then enter 0"
-          />
-        </div>
-        <div className={classes.formGroup}>
-          <FormField
-            label="Enter the postcode areas you deliver to"
-            name="acceptedPostcodes"
-            fullWidth
-            type="text"
-            helpText="Enter a list of post code areas separated by a comma e.g N22, N15"
-          />
-        </div>
+        {values.deliveryOptions.includes('localDelivery') && (
+          <>
+            <div className={classes.formGroup}>
+              <FormField
+                label="Enter your delivery charge"
+                name="deliveryCharge"
+                fullWidth
+                type="number"
+                helpText="If delivery is free then enter 0"
+              />
+            </div>
+            <div className={classes.formGroup}>
+              <FormField
+                label="Enter the postcode areas you deliver to"
+                name="acceptedPostcodes"
+                fullWidth
+                type="text"
+                helpText="Enter a list of post code areas separated by a comma e.g N22, N15"
+              />
+            </div>
+          </>
+        )}
         <div className={classes.formGroup}>
           <Button
             type="submit"

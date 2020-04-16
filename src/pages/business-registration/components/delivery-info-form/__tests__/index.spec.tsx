@@ -7,7 +7,15 @@ import DeliveryInfoForm, { Values } from '..';
 
 describe('DeliveryInfoForm component', () => {
   let wrapper;
-  const renderProps = {};
+  let renderProps;
+
+  beforeEach(() => {
+    renderProps = {
+      values: {
+        deliveryOptions: [],
+      },
+    };
+  });
 
   afterEach(() => {
     wrapper.unmount();
@@ -34,7 +42,8 @@ describe('DeliveryInfoForm component', () => {
       });
     });
 
-    it('should render a delivery charge text field', () => {
+    it('should render a delivery charge text field if deliveryOptions form value contains "localDelivery"', () => {
+      renderProps.values.deliveryOptions = ['localDelivery'];
       wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(2).props()).toMatchObject({
         name: 'deliveryCharge',
@@ -42,7 +51,8 @@ describe('DeliveryInfoForm component', () => {
       });
     });
 
-    it('should render a accepted postcodes text field', () => {
+    it('should render a accepted postcodes text field if deliveryOptions form value contains "localDelivery"', () => {
+      renderProps.values.deliveryOptions = ['localDelivery'];
       wrapper = shallow(<DeliveryInfoForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(3).props()).toMatchObject({
         name: 'acceptedPostcodes',
