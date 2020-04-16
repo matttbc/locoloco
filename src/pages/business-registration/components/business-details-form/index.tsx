@@ -77,6 +77,12 @@ const BusinessDetailsForm: React.FC<FormikProps<Values>> = () => {
           />
         </div>
         <div className={classes.formGroup}>
+          <Typography component="p" variant="h5">
+            Customise your page
+          </Typography>
+          <Typography component="p">
+            Add a logo an image to your listing. this can also be done later.
+          </Typography>
           <FormField
             label="Upload your logo"
             name="logo"
