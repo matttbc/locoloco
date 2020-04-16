@@ -22,7 +22,7 @@ const TextFieldInput: React.FC<Props & FieldProps> = ({
   helpText,
   form,
 }: Props & FieldProps) => (
-  <FormControl fullWidth={fullWidth}>
+  <FormControl component="fieldset" fullWidth={fullWidth}>
     <TextField
       {...field}
       id={field.name}
