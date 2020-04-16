@@ -31,7 +31,7 @@ const Header: React.FC<Props> = ({
       <Typography
         variant="button"
         align="center"
-        color="primary"
+        color="secondary"
         className={classes.logo}
       >
         Loql

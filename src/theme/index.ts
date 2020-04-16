@@ -20,5 +20,15 @@ export default createMuiTheme({
     background: {
       default: '#ffffff',
     },
+    primary: {
+      main: '#6CBF84',
+      contrastText: '#ffffff',
+    },
+    secondary: {
+      main: '#F26968',
+    },
+    error: {
+      main: '#FF0000',
+    },
   },
 });
