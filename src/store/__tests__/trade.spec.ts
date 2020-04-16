@@ -34,6 +34,8 @@ describe('Trade store', () => {
             },
             phone: '',
             website: '',
+            logo: '',
+            image: '',
             openFor: [],
             openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
           },

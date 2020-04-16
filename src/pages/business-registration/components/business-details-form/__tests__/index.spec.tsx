@@ -62,9 +62,25 @@ describe('BusinessDetailsForm component', () => {
       });
     });
 
-    it('should render an openFor checkbox group field', () => {
+    it('should render a logo file input field', () => {
       wrapper = shallow(<BusinessDetailsForm {...renderProps as FormikProps<Values>} />);
       expect(wrapper.find('FormField').at(6).props()).toMatchObject({
+        name: 'logo',
+        type: 'file',
+      });
+    });
+
+    it('should render an image file input field', () => {
+      wrapper = shallow(<BusinessDetailsForm {...renderProps as FormikProps<Values>} />);
+      expect(wrapper.find('FormField').at(7).props()).toMatchObject({
+        name: 'image',
+        type: 'file',
+      });
+    });
+
+    it('should render an openFor checkbox group field', () => {
+      wrapper = shallow(<BusinessDetailsForm {...renderProps as FormikProps<Values>} />);
+      expect(wrapper.find('FormField').at(8).props()).toMatchObject({
         name: 'openFor',
         type: 'checkboxGroup',
         options: [
@@ -77,7 +93,7 @@ describe('BusinessDetailsForm component', () => {
 
     it('should render an openDays checkbox group field', () => {
       wrapper = shallow(<BusinessDetailsForm {...renderProps as FormikProps<Values>} />);
-      expect(wrapper.find('FormField').at(7).props()).toMatchObject({
+      expect(wrapper.find('FormField').at(9).props()).toMatchObject({
         name: 'openDays',
         type: 'checkboxGroup',
         options: [

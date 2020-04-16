@@ -1,3 +1,4 @@
+/* eslint-disable no-confusing-arrow */
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -46,6 +47,18 @@ export const ValidationSchema = Yup.object().shape({
     .string()
     .required('Website is required.')
     .matches(/^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([-.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/, { message: 'Website address is not valid.' }),
+  logo: Yup.mixed()
+    .test(
+      'fileSize',
+      'Logo file size should be maximum 5Mb.',
+      (value) => value ? value.size <= 5 * 1024 * 1024 : true,
+    ),
+  image: Yup.mixed()
+    .test(
+      'fileSize',
+      'Logo file size should be maximum 5Mb.',
+      (value) => value ? value.size <= 5 * 1024 * 1024 : true,
+    ),
   openFor: Yup
     .array()
     .required('Selected at least one option.'),
@@ -58,6 +71,8 @@ const mapStoreToInitialValues = (store) => ({
   address: store.register.businessDetails.address,
   phone: store.register.businessDetails.phone,
   website: store.register.businessDetails.website,
+  logo: store.register.businessDetails.logo,
+  image: store.register.businessDetails.image,
   openFor: store.register.businessDetails.openFor,
   openDays: store.register.businessDetails.openDays,
 });

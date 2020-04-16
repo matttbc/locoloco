@@ -78,6 +78,22 @@ const BusinessDetailsForm: React.FC<FormikProps<Values>> = () => {
         </div>
         <div className={classes.formGroup}>
           <FormField
+            label="Upload your logo"
+            name="logo"
+            fullWidth
+            type="file"
+            accept="image/*"
+          />
+          <FormField
+            label="Upload an image"
+            name="image"
+            fullWidth
+            type="file"
+            accept="image/*"
+          />
+        </div>
+        <div className={classes.formGroup}>
+          <FormField
             label="What are you open?"
             name="openFor"
             fullWidth

@@ -21,6 +21,8 @@ export type TradeStore = {
       };
       phone: string;
       website: string;
+      logo: File | string;
+      image: File | string;
       openFor: string[];
       openDays: string[];
     };
@@ -62,6 +64,8 @@ export default (): TradeStore => {
         },
         phone: '',
         website: '',
+        logo: '',
+        image: '',
         openFor: [],
         openDays: ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'],
       },
