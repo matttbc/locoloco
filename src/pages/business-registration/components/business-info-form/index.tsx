@@ -59,13 +59,43 @@ const BusinessInfoForm: React.FC<FormikProps<Values>> = () => {
             fullWidth
             type="checkboxGroup"
             options={[
-              { label: 'French', value: 'french' },
-              { label: 'Italian', value: 'italian' },
-              { label: 'Japanese', value: 'japanese' },
+              { label: 'African', value: 'african' },
+              { label: 'American', value: 'american' },
+              { label: 'Argentinian', value: 'argentinian' },
+              { label: 'Asian', value: 'asian' },
+              { label: 'Fusion', value: 'fusion' },
+              { label: 'British', value: 'british' },
+              { label: 'Caribbean', value: 'caribbean' },
               { label: 'Chinese', value: 'chinese' },
+              { label: 'Ethiopian', value: 'ethiopian' },
+              { label: 'European', value: 'european' },
+              { label: 'French', value: 'french' },
+              { label: 'Greek', value: 'greek' },
+              { label: 'Indian', value: 'indian' },
+              { label: 'International', value: 'international' },
+              { label: 'Italian', value: 'italian' },
+              { label: 'Jamaican', value: 'jamaican' },
+              { label: 'Japanese', value: 'japanese' },
+              { label: 'Korean', value: 'korean' },
+              { label: 'Lebanese', value: 'lebanese' },
+              { label: 'Malaysian', value: 'malaysian' },
+              { label: 'Mediterranean', value: 'mediterranean' },
+              { label: 'Mexican', value: 'mexican' },
+              { label: 'Middle Eastern', value: 'middle-eastern' },
+              { label: 'Pan Asian', value: 'pan-asian' },
+              { label: 'Portuguese', value: 'portuguese' },
+              { label: 'South American', value: 'south-american' },
+              { label: 'Spanish', value: 'spanish' },
+              { label: 'Taiwanese', value: 'taiwanese' },
+              { label: 'Thai', value: 'thai' },
+              { label: 'Turkish', value: 'turkish' },
+              { label: 'Vietnamese', value: 'vietnamese' },
+              { label: 'Western', value: 'western' },
+              { label: 'Other', value: 'other' },
             ]}
             helpText="Select at least one"
           />
+
         </div>
         <div className={classes.formGroup}>
           <Button
