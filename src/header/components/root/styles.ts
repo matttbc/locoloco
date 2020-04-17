@@ -7,7 +7,8 @@ export default (theme) => makeStyles({
     height: '60px',
   },
   logo: {
-    fontSize: '2rem',
+    width: '70px',
+    height: '32px',
     position: 'absolute',
     top: '50%',
     left: '16px',

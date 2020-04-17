@@ -12,7 +12,8 @@
     "!src/config/**",
     "!src/theme/**",
     "!src/**/styles.*",
-    "!src/styles/*.*"
+    "!src/styles/*.*",
+    "!src/assets/*.*"
   ],
   "moduleNameMapper": {
     "\\.(svg)$": "<rootDir>/config/module-mock.js"

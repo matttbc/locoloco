@@ -2,6 +2,9 @@ import React from 'react';
 import { Button, Typography, Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 
+import SVG from '@components/svg';
+import { Logo } from '@assets';
+
 import styles from './styles';
 
 type Props = {
@@ -34,7 +37,7 @@ const Header: React.FC<Props> = ({
         color="secondary"
         className={classes.logo}
       >
-        Loql
+        <SVG>{Logo}</SVG>
       </Typography>
       {isUserAuthenticated && (
         <>
