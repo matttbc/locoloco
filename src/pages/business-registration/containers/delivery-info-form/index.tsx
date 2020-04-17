@@ -65,7 +65,6 @@ const Form: React.FC<Props> = ({ goToNextStep }: Props) => {
   const { trade } = useStore();
 
   const onSubmit = (values: FormValues) => {
-    console.log(values);
     trade.register.deliveryDetails = {
       ...toJS(trade.register.deliveryDetails),
       ...values,
