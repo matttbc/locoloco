@@ -29,7 +29,8 @@
         "@store": "./src/store",
         "@services": "./src/services",
         "@theme": "./src/theme",
-        "@styles": "./src/styles"
+        "@styles": "./src/styles",
+        "@assets": "./src/assets"
       },
       "cwd": "packagejson"
     }]

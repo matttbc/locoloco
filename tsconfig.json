@@ -25,11 +25,13 @@
       "@pages/*": ["./pages/*"],
       "@services/*": ["./services/*"],
       "@theme": ["./theme"],
-      "@styles/*": ["./styles/*"]
+      "@styles/*": ["./styles/*"],
+      "@assets": ["./assets"]
     }
   },
   "include": [
-    "src"
+    "src",
+    "./index.d.ts"
   ],
   "exclude": [
     "node_modules",

@@ -4,3 +4,4 @@ webpack.prod.config.js
 README.md
 /src/**/*.jpg
 /src/**/*.png
+/src/**/*.svg

@@ -66,6 +66,20 @@ const config = {
         loader: 'babel-loader',
       },
       {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'babel-loader',
+          },
+          {
+            loader: 'react-svg-loader',
+            options: {
+              jsx: true,
+            },
+          },
+        ],
+      },
+      {
         test: /\.(jpg|png)$/,
         use: 'file-loader?name=assets/images/[hash].[ext]',
       },

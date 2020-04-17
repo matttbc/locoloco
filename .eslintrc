@@ -4,7 +4,8 @@
     "ecmaFeatures": {
       "jsx": true
     },
-    "project": "./tsconfig.json"
+    "project": "./tsconfig.json",
+    "extraFileExtensions": [".svg"]
   },
   "plugins": ["@typescript-eslint"],
   "settings": {
