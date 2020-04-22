@@ -12,6 +12,8 @@ export const AUTHENTICATION_RENEW_PATH = '/authentication/silent-renew';
 export const LANDING_PATH = '/';
 export const REGISTER_BUSINESS_PATH = '/register';
 export const DASHBOARD_PATH = '/dashboard';
+export const TERMS_AND_CONDITIONS_PATH = '/terms-and-conditions';
+export const PRIVACY_POLICY_PATH = '/privacy-policy';
 
 
 export default [
@@ -32,6 +34,14 @@ export default [
   {
     path: DASHBOARD_PATH,
     component: withSuspense(Dashboard),
+  },
+  {
+    path: TERMS_AND_CONDITIONS_PATH,
+    component: withSuspense(Landing),
+  },
+  {
+    path: PRIVACY_POLICY_PATH,
+    component: withSuspense(Landing),
   },
   {
     path: '*',

@@ -66,7 +66,7 @@ const PaymentDetailsForm: React.FC<FormikProps<Values>> = ({ values }: FormikPro
             variant="contained"
             className={classes.submitButton}
           >
-            Next: Add menu info
+            Next: Terms and Conditions
           </Button>
         </div>
       </Form>

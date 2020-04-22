@@ -6,8 +6,13 @@ import TextField, { Props as TextFieldProps } from './text-field';
 import SelectField, { Props as SelectFieldProps } from './select-field';
 import CheckboxGroup, { Props as CheckboxGroupProps } from './checkbox-group';
 import FileSelectField, { Props as FieldFieldProps } from './file-select-field';
+import CheckboxField, { Props as CheckboxFieldProps } from './checkbox-field';
 
-type Props = TextFieldProps | SelectFieldProps | CheckboxGroupProps | FieldFieldProps;
+type Props = TextFieldProps
+  | SelectFieldProps
+  | CheckboxGroupProps
+  | FieldFieldProps
+  | CheckboxFieldProps;
 
 const COMPONENTS_TYPES = {
   text: TextField,
@@ -17,6 +22,7 @@ const COMPONENTS_TYPES = {
   select: SelectField,
   checkboxGroup: CheckboxGroup,
   file: FileSelectField,
+  checkbox: CheckboxField,
 };
 
 export const FieldWrapper: React.FC<Props & FieldProps> = (props: Props & FieldProps) => {

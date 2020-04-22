@@ -7,6 +7,7 @@ import TextField from '../text-field';
 import SelectField from '../select-field';
 import CheckboxGroupField from '../checkbox-group';
 import FileSelectField from '../file-select-field';
+import CheckboxField from '../checkbox-field';
 
 describe('FormField component', () => {
   let renderProps;
@@ -52,6 +53,12 @@ describe('FormField component', () => {
       renderProps.type = 'file';
       wrapper = shallow(<FieldWrapper {...renderProps} />);
       expect(wrapper.find(FileSelectField).length).toEqual(1);
+    });
+
+    it('should render a CheckboxField component if type prop value is checkbox', () => {
+      renderProps.type = 'checkbox';
+      wrapper = shallow(<FieldWrapper {...renderProps} />);
+      expect(wrapper.find(CheckboxField).length).toEqual(1);
     });
   });
 
