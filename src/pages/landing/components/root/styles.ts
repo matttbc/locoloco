@@ -6,6 +6,12 @@ export default makeStyles({
   },
   section: {
     maxWidth: '700px',
-    marginBottom: '80px',
+    marginBottom: '20px',
+  },
+  subtitle: {
+    marginBottom: '20px',
+  },
+  info: {
+    marginBottom: '40px',
   },
 });
