@@ -44,6 +44,9 @@ const Review: React.FC<Props> = ({ goToNextStep }: Props) => {
     paymentDetails,
   } = registrationData;
   
+  const minimumOrder = deliveryDetails.minimumOrder ? Number.parseFloat(deliveryDetails.minimumOrder).toFixed(2) : '0.00';
+  const deliveryCharge = deliveryDetails.deliveryCharge ? Number.parseFloat(deliveryDetails.deliveryCharge).toFixed(2) : '0.00';
+
   // Disable to allow formatting of user data
   /* eslint-disable react/jsx-one-expression-per-line */
   return (
@@ -107,11 +110,11 @@ const Review: React.FC<Props> = ({ goToNextStep }: Props) => {
           Open on: {businessDetails.openDays.join(', ')}
         </Typography>
         <Typography component="p">
-          Min. Order Value: &pound;{Number.parseFloat(deliveryDetails.minimumOrder).toFixed(2)}
+          Min. Order Value: &pound;{minimumOrder}
         </Typography>
         <Typography component="p">
           {/* Fix NaN error */}
-          Delivery Charge: &pound;{Number.parseFloat(deliveryDetails.deliveryCharge).toFixed(2)}
+          Delivery Charge: &pound;{deliveryCharge}
         </Typography>
         <Typography component="p">
           Delivery Postcodes: {deliveryDetails.acceptedPostcodes}
