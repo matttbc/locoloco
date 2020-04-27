@@ -26,7 +26,8 @@
       "@services/*": ["./services/*"],
       "@theme": ["./theme"],
       "@styles/*": ["./styles/*"],
-      "@assets": ["./assets"]
+      "@assets": ["./assets"],
+      "@constants/*": ["./constants/*"],
     }
   },
   "include": [

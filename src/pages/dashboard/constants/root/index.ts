@@ -1,10 +1,10 @@
-export type DashboardRouteObj = {
+export type Route = {
   label: string;
   attribute: string;
   component: string;
 };
 
-export const DashboardRoute: DashboardRouteObj[] = [
+export const Routes: Route[] = [
   {
     label: 'Account',
     attribute: 'account',

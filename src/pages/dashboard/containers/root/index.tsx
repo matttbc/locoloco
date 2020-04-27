@@ -12,20 +12,14 @@ import Help from '@material-ui/icons/Help';
 import {
   ListItem, List, ListItemText, Toolbar, ListItemIcon,
 } from '@material-ui/core';
-import { DashboardRoute } from '../../../../../constants/root';
+import { Routes, Route } from '../../constants/root';
 
 
 import styles from './styles';
 
 type Props = {
   handleSelected: (text) => void;
-  routes: DashboardRoutesObj[];
-};
-
-type DashboardRoutesObj = {
-  label: string;
-  attribute: string;
-  component: string;
+  routes: Route[];
 };
 
 const DrawerItems: React.FC<Props> = ({ handleSelected, routes }: Props) => (
@@ -61,11 +55,11 @@ const Dashboard: React.FC<{}> = () => {
         open
       >
         <Toolbar />
-        <DrawerItems routes={DashboardRoute} handleSelected={handleItem} />
+        <DrawerItems routes={Routes} handleSelected={handleItem} />
       </Drawer>
       <main className={classes.content}>
         {
-          DashboardRoute.map((route) => route.attribute === selected && route.component)
+          Routes.map((route) => route.attribute === selected && route.component)
         }
       </main>
     </div>
