@@ -76,6 +76,7 @@ const BusinessDetailsForm: React.FC<FormikProps<Values>> = () => {
             type="text"
           />
         </div>
+        {/* This should be moved to Manage Details in Dashboard */}
         <div className={classes.formGroup}>
           <Typography component="p" variant="h5">
             Customise your page
