@@ -11,6 +11,8 @@ import BusinessDetailsForm from '../../containers/business-details-form';
 import DeliveryInfoForm from '../../containers/delivery-info-form';
 import PaymentDetailsForm from '../../containers/payment-details-form';
 import LegalAcknowledgementForm from '../../containers/legal-acknowledgement-form';
+import Review from '../review';
+import Confirmation from '../confirmation';
 
 import styles from './styles';
 
@@ -22,6 +24,8 @@ const STEPS_COMPONENTS = [
   DeliveryInfoForm,
   PaymentDetailsForm,
   LegalAcknowledgementForm,
+  Review,
+  Confirmation,
 ];
 
 const BusinessRegistration: React.FC<{}> = () => {
